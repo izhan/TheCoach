@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+}
+.angel {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  z-index: 10;
+  display: inline-block;
+  height: 400px;
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('coach-before-angel.png');
+}
+.mailbox {
+  position: absolute;
+  bottom: 100px;
+  left: 300px;
+  z-index: 10;
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('mailbox.png');
+}
+
+/* start background */
+@-webkit-keyframes slide {
+  from{
+      background-position:0px;
+  }
+  to{
+      background-position:1600px;
+  }
+}
+.motivation-background {
+
+}
+.motivation-background-sky {
+  background-image: url('sky.png');
+  height: 500px;
+  background-size: 1000px;
+  -webkit-animation: slide 45s linear infinite;
+}
+.motivation-background-pavement {
+  background-image: url('pavement.png');
+  height: 50px;
+  position: relative;
+  z-index: 1;
+}
+.motivation-background-ground {
+  position: absolute;
+  top: 540px;
+  background-image: url('ground.png');
+  position: absolute;
+  left:0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}

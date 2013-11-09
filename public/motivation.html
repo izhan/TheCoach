@@ -1,10 +1,19 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Encourage Your Friends</title>
+    <link rel="stylesheet" href="motivation.css" type="text/css" />
+    <link rel="stylesheet" href="envelope.css" type="text/css" />
   </head>
   <body>
-
-    <form method="post" action="{% url 'motivate' %}">
+    <div class="angel"></div>
+    <div class="mailbox"></div>
+    <div class="motivation-background">
+      <div class="motivation-background-sky"></div>
+      <div class="motivation-background-pavement"></div>
+      <div class="motivation-background-ground"></div>
+    </div>
+    <form class="envelope" method="post" action="{% url 'motivate' %}">
       {% csrf_token %}
       <div>
         <span>Name: </span>

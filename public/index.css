@@ -208,7 +208,6 @@ p, span, div, section {
   background-image: url('ground.png');
   position: absolute;
   top: 240px;
-  background-image: url('ground.png');
   position: absolute;
   top: 240px;
   left: 300px;
@@ -232,7 +231,6 @@ p, span, div, section {
   z-index: 1;
 }
 .front-background-ground {
-  background-image: url('ground.png');
   position: absolute;
   top: 540px;
   background-image: url('ground.png');
