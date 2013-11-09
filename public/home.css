@@ -10,9 +10,14 @@ body {
   font-size: 30px;
   margin-top: 8px;
   display: inline-block;
+  position: relative;
 }
 .enter:visited {
   color: white;
+}
+.enter:active {
+  top: 1px;
+  right: 1px;
 }
 .lame-coach {
   display: inline-block;

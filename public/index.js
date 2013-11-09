@@ -36,17 +36,17 @@ $(function(){
 
 function getMessages()
 {
-    $.ajax({ url: "query/?id=" + maxId, success: function( data ) {
-        data = JSON.parse(data);
-        // sanitize the data into valid objects
-        for(var i = 0; i < data.length; i++) {
-            var message = {"id": "", "name": "", "message": ""};
-            message.id = data[i].pk;
-            message.name = data[i].fields.name;
-            message.text = data[i].fields.motivation_text;
-            appendMessage(message);
-        }
-    }, dataType: 'json', complete: getMessages, timeout: 10000 });
+  $.ajax({ url: "query/?id=" + maxId, success: function( data ) {
+      data = JSON.parse(data);
+      // sanitize the data into valid objects
+      for(var i = 0; i < data.length; i++) {
+          var message = {"id": "", "name": "", "message": ""};
+          message.id = data[i].pk;
+          message.name = data[i].fields.name;
+          message.text = data[i].fields.motivation_text;
+          appendMessage(message);
+      }
+  }, dataType: 'json', complete: getMessages, timeout: 10000 });
 }
 
 // call when user presses on lets go
@@ -67,11 +67,19 @@ function appendTask(item)
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
-  $('.front-list').prepend("<div class='front-item'><span class='front-name'>" + item.name + " </span><span class='front-time'>" +
+  $('.front-list').prepend("<div class='front-item'><div class='checkbox'></div><div class='front-wrapper'>" +
+     "<span class='front-name'>" + item.name + " </span><span class='front-time'>" +
   	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.hours + " </span></span>" +
-  	 "</span></div>");
+  	 "</span></div></div>");
+
+  if (!readyToGo)
+  {
+    readyToGo = true;
+    $('.lame-coach-message').hide();
+    $('.ready-to-go').show();
+  }
 }
 
 function appendMessage(item)
@@ -139,6 +147,7 @@ var coachMessages = [
 
 var tasklist = [];
 var coachTimer;
+var readyToGo = false; // has someone added a task yet?
 var task1 = {
   name: "Study for ORF 309",
   time: 5000,
@@ -154,12 +163,12 @@ var task2 = {
   seconds: 15
 };
 var message1 = {
-  id: 1,
+  id: 0,
   name: "Harold Wu",
   text: "Hey man, I hope you are doing well!  You got this!"
 };
 var message2 = {
-  id: 2,
+  id: 0,
   name: "The Dude",
   text: "Dude, like thats just your opinion man."
 };
