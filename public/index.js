@@ -34,7 +34,7 @@ function getMessages()
             var message = {"id": "", "name": "", "message": ""};
             message.id = data[i].pk;
             message.name = data[i].fields.name;
-            message.text =data[i].fields.motivation_text;
+            message.text = data[i].fields.motivation_text;
             appendMessage(message);
         }
     });
