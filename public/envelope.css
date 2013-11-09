@@ -1,0 +1,373 @@
+/* Adopted from the envelope on www.irvinzhan.com */
+.contact-title-wrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.error.name-error, .error.email-error, .error.message-error {
+  display: none;
+  color: red;
+  background: transparent;
+}
+
+.fieldset-contact {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.fieldset-contact legend {
+  background: transparent;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.textarea-wrapper {
+  padding: 0 25px;
+}
+
+.message-confirmation, .send-another {
+  display: none;
+}
+
+#letter .x-button {
+  display: inline;
+  bottom: 105px;
+  right: 20px;
+  font-size: 25px;
+}
+
+.send-another, .x-button {
+  margin-top: 10px;
+}
+
+.envelope-title {
+  display: block;
+}
+
+#open-up {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 60px;
+}
+
+.envelope-wrapper {
+  padding: 0;
+}
+
+/* works for open */
+a {
+  color: #9b4849;
+  text-decoration: none;
+  display: block;
+}
+
+a:hover {
+  color: #783839;
+}
+
+#lid a {
+  width: 100%;
+  text-align: center;
+}
+
+#top a {
+  padding: 160px 20px 0 0;
+}
+
+.front a {
+  margin-top: 10px;
+}
+
+#letter a {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+}
+
+section.container {
+  position: relative;
+  top: 280px;
+  max-width: 600px;
+  height: 300px;
+  margin: 10px auto 0;
+  -webkit-perspective: 1000px;
+}
+
+/* FLIPPING THE CARD */
+section.container > .flip.wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateY(180deg);
+  transition: -webkit-transform 1s 0s;
+  -webkit-transform-origin: center center;
+}
+
+section.container > .flip.wrapper > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+section.container > .flip.wrapper > .back {
+  -webkit-transform: rotateY(180deg);
+}
+
+section.container:target > .flip.wrapper {
+  -webkit-transform: rotateY(0deg);
+}
+
+#content {
+  background: #837362;
+}
+
+/* closing */
+.container#lid {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  -webkit-perspective: 800px;
+  z-index: 2;
+  transition: z-index 0s 1s;
+}
+
+#lid .flip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transition: -webkit-transform 0.5s 1s;
+  -webkit-transform-origin: left top;
+}
+
+/* open */
+#content:target .container#lid {
+  z-index: -1;
+  transition: z-index 0s 1.5s;
+}
+
+#content:target #lid .flip {
+  -webkit-transform: rotateX(180deg);
+  transition: -webkit-transform 0.5s 1s;
+}
+
+/* letter */
+#letter {
+  background: #fafafa;
+  position: absolute;
+  width: 90%;
+  height: 95%;
+  left: 5%;
+  top: 5%;
+  z-index: 0;
+  transition: .5s 1.5s;
+  -o-transition: 0s 1s;
+}
+
+.closing #letter {
+  transition: .5s .5s;
+  -o-transition: 0s 0s;
+}
+
+#content:target #letter {
+  top: -40%;
+  -o-transition: .5s 1.5s;
+}
+
+#content:target.closing #letter {
+  top: -40%;
+  -o-transition: .5s .5s;
+}
+
+#letter .container {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  -webkit-perspective: 800px;
+  transition: 0s 1s;
+  z-index: 1;
+}
+
+.closing #letter .container {
+  transition: 0s 0s;
+}
+
+#letter .flip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  transition: -webkit-transform 0.5s 1s;
+  -webkit-transform-origin: left top;
+}
+
+.closing #letter .flip {
+  transition: -webkit-transform 0.5s 0s;
+}
+
+#content:target #letter .flip {
+  -webkit-transform: rotateX(180deg);
+  transition: -webkit-transform 0.5s 2s;
+}
+
+#content:target.closing #letter .flip {
+  transition: -webkit-transform 0.5s 1s;
+}
+
+#content:target #letter .container {
+  z-index: -1;
+  transition: z-index 0s 2.5s;
+}
+
+#content:target.closing #letter .container {
+  transition: z-index 0s 1.5s;
+}
+
+#lid .flip > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+#lid .flip > .back {
+  -webkit-transform: rotateX(180deg);
+}
+
+#letter .flip > div, #lid .flip > div, section.container > .flip.wrapper > div {
+  box-sizing: border-box;
+}
+
+#lid .flip .front, section.container > .flip.wrapper .front {
+  background: Beige;
+  border: 1px #eae1d5 solid;
+  box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.6), 0 2px 3px -2px rgba(0, 0, 0, 0.6);
+  padding: 20px 30px;
+  color: #837362;
+}
+
+section.container > .flip.wrapper > .front {
+  font-size: 1.25em;
+  background: beige;
+}
+
+#lid .flip .front {
+  border-radius: 0 0 40px 40px;
+  font-size: 1.25em;
+  text-align: center;
+  padding-top: 50px;
+}
+
+#lid .flip .back {
+  background: #837362;
+  border-radius: 40px 40px 0 0;
+  border: 35px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  box-shadow: inset 0 10px 30px 10px rgba(0, 0, 0, 0.1);
+}
+
+#top {
+  text-align: right;
+  background: Beige;
+  border: 1px #eae1d5 solid;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 65%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+#letter .flip > .front, #letter .flip > .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+#letter .flip > .back {
+  -webkit-transform: rotateX(180deg);
+}
+
+#letter .flip .front {
+  background: #fafafa;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+#letter .flip .back {
+  padding: 10px 25px;
+  background: #fafafa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  line-height: 1.4;
+  box-shadow: 0 -5px 8px -4px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dotted #837362;
+  width: 55%;
+  -webkit-appearance: none;
+}
+input[type="text"].error {
+  background-color: rgba(198, 15, 19, 0.1);
+  margin-bottom: 1em;
+  display: inline;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-bottom: 1px solid #837362;
+  -webkit-appearance: none;
+}
+
+textarea {
+  margin: 10px auto 0;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px dashed #c8bfb6;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #837362;
+}
+
+textarea {
+  height: 145px;
+}
+
+.textarea {
+  position: relative;
+}
+
+.textarea label {
+  position: absolute;
+  width: 100%;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  -webkit-appearance: none;
+  font-size: .9em;
+  background: #9b4849;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 3px;
+  border: 1px solid #9b4849;
+}
+
+input[type="submit"]:hover {
+  background: #783839;
+}
