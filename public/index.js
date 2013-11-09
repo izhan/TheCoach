@@ -60,7 +60,7 @@ function getMessages()
 function transitionToCoach()
 {
   $('.coach-page').show();
-  $('.task-number').html("Number of Tasks: " + tasklist.length);
+  $('.task-number').html("Number of Tasks: " + (tasklist.length - finished));
   $('.initial-page').hide();
   //getMessages();
   window.setInterval(function() {
@@ -68,10 +68,11 @@ function transitionToCoach()
   }, 60000);
 }
 
+var finishedlist = [];
 var count = 0;
 function appendTask(item)
 {
-
+  finishedlist.push(0);
   tasklist.push(item);
   $('.task-list').append("<div class='task-item'><div class='checkbox' onclick='taskFinished(" + count + ")'></div><span class='task-name'>" + 
     item.name + " </span><div class='task-time'>" +
@@ -159,6 +160,7 @@ var coachMessages = [
 ]
 
 var tasklist = [];
+
 var coachTimer;
 var readyToGo = false; // has someone added a task yet?
 var task1 = {
@@ -210,13 +212,30 @@ function startTimer()
 }
 
 function expired() {
-  taskNum++;
+  while (finishedlist[taskNum] == 1 && taskNum < tasklist.length - 1) {
+    taskNum++;
+  }
+  finishedlist[taskNum] = 1;
   startTimer();
 }
 
+var finished = 0;
+
 function taskFinished(numTask) {
+  finished++;
+  if (finished == tasklist.length) {
+    allDone();
+  }
+  $('.task-number').html("Number of Tasks: " + (tasklist.length - finished));
   $($('.task-item')[numTask]).fadeOut(1000);
   $($('.task-time')[numTask]).countdown('destroy');
+  finishedlist[numTask] = 1;
+  if (numTask == taskNum) {
+    startTimer(); 
+  }
   taskNum++;
-  startTimer();
+}
+
+function allDone() {
+
 }
