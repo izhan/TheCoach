@@ -7,8 +7,43 @@
 }
 .initial-page {
   background:red;
+  display: none;
 }
 .coach-page {
-  background: yellow;
-  display: none;
+  background: #FAFAFF;
+}
+
+p, span, div {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue";
+}
+
+/* begin coach pages */
+
+/* begin task list */
+.task-list-wrapper {
+  background: #B2D4DC;
+  width: 300px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.task-number {
+  color: white;
+  font-size: 25px;
+  background-color: #2A3A48;
+  text-align: center;
+  padding: 15px 0;
+}
+.task-list {
+}
+.task-item {
+  padding: 15px;
+}
+.task-name {
+  color: #2A3A48;
+}
+.task-time {
+  color: #3E6372;
 }
