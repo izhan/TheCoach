@@ -42,7 +42,7 @@ $(function(){
 
 function getMessages()
 {
-  $.ajax({ url: "query/?id=" + maxId, success: function( data ) {
+  $.ajax({ url: "query/?id=" + maxId + "&time=" + full_time + "&date=" + full_date, success: function( data ) {
       data = JSON.parse(data);
       // sanitize the data into valid objects
       for(var i = 0; i < data.length; i++) {
@@ -62,9 +62,9 @@ function transitionToCoach()
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   $('.initial-page').hide();
-  //getMessages();
+  getMessages();
   window.setInterval(function() {
-      //getMessages();
+      getMessages();
   }, 60000);
 }
 
@@ -145,6 +145,14 @@ function randomTalking()
   }, 4500); 
 }
 
+var date = new Date();
+var date_year = date.getFullYear();
+var date_day = date.getDate();
+var date_month = date.getMonth() + 1;
+var full_date = "" + date_year + "-" + date_month + "-" + date_day
+var time_min = date.getMinutes();
+var time_hours = date.getHours() - 1;
+var full_time = "" + time_hours + ":" + time_min + ":00";
 var messageList = [];
 var maxId = -1;
 var coachMessages = [
