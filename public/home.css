@@ -1,3 +1,43 @@
+body {
+  background: #123048;
+  padding: 50px;
+}
+.enter {
+  color: white;
+  background-color: #FF4B00;
+  text-decoration: none;
+  padding: 20px 40px;
+  font-size: 30px;
+  margin-top: 8px;
+  display: inline-block;
+}
+.enter:visited {
+  color: white;
+}
 .lame-coach {
-  
+  display: inline-block;
+  background-image: url('coach-before.png');
+  height: 500px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.introduction-wrapper {
+  position: absolute;
+  top: 50px;
+  left: 400px;
+  text-align: center;
+}
+.introduction {
+  text-align: center;
+  display: block;
+  color: #eee;
+  font-size: 75px;
+}
+.the-coach {
+  padding: 25px;
+  text-align: center;
+  display: block;
+  color: white;
+  font-size: 125px;
 }
