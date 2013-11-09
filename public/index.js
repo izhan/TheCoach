@@ -68,7 +68,8 @@ function appendMessage(item)
   if (item.id > maxId)
     maxId = item.id;
 
-  $('.message-list').append("<div class=message-item>" + item.text + "</div>");
+  $('.message-list').append("<div class='message-item'><span class='message-name'>" + item.name + 
+    ": </span><span class='message-text'>" + item.text + "</span</div>");
 }
 
 var messageList = [];
