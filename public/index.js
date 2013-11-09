@@ -1,7 +1,7 @@
 $(function(){
 
   $('.show-coach').on('click', function(){
-    $('.coach-page').show();
+    transitionToCoach();
   });
 
   appendTask(task1);
@@ -9,11 +9,6 @@ $(function(){
 
   appendMessage(message1);
   appendMessage(message2);
-  
-  theCoachSays();
-  window.setInterval(function(){
-    theCoachSays();
-  }, 4500);
 
   $('.add-task').on('click', function(){
   	var hour=$("#hours").val();
@@ -59,6 +54,10 @@ function transitionToCoach()
 {
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
+  theCoachSays();
+  window.setInterval(function(){
+    theCoachSays();
+  }, 4500);
   //getMessages();
 }
 
