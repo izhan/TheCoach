@@ -52,6 +52,7 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
+  $('.initial-page').hide();
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   theCoachSays();

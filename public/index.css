@@ -25,7 +25,6 @@ p, span, div, section {
   background: #b2d4dc;
   border: 4px solid #3e6372;
   padding: 20px;
-  margin: 10px 300px 10px 300px;
 }
 .front-list {
   text-align: center;
@@ -36,18 +35,43 @@ p, span, div, section {
   padding: 10px;
   margin: 10px 100px 10px 100px;
 }
-
 .clipboard {
   position: absolute;
-  top: 0;
+  padding: 130px 75px 0 75px;
+  padding-top: 130px;
+  top: 65px;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 700px;
+  margin: 0 auto;
+  max-width: 700px;
   background-image: url('clipboard.png');
   background-size: 700px;
   background-repeat: no-repeat;
   background-position: center top;
 }
+.lame-coach-wrapper {
+  position: absolute;
+  left: 25%;
+  top: 8px;
+  z-index: 5;
+}
+.lame-coach {
+  display: inline-block;
+  background-image: url('coach-before-head.png');
+  background-size: 150px;
+  height: 150px;
+  width: 150px;
+}
+.lame-coach-message {
+  padding-top: 15px;
+  vertical-align: 80px;
+  padding-left: 10px;
+  font-size: 55px;
+  z-index: 5;
+}
+
 /* begin task list */
 .task-list-wrapper {
   background: #B2D4DC;
