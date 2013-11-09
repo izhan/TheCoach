@@ -9,6 +9,12 @@ $(function(){
   transitionToCoach();
   appendMessage(message1);
   appendMessage(message2);
+  
+  theCoachSays();
+  window.setInterval(function(){
+    theCoachSays();
+  }, 4500);
+
   $('.add-task').on('click', function(){
   	var hours = $("hours").val();
   	var mins = $("minutes").val();
@@ -46,7 +52,7 @@ function transitionToCoach()
 {
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
-  getMessages();
+  //getMessages();
 }
 
 function appendTask(item)
@@ -59,23 +65,38 @@ function appendTask(item)
     "</div></div>");
 }
 
-function appendTime(hours, minutes, seconds)
-{
-  var output = "";
-
-}
-
 function appendMessage(item)
 {
   if (item.id > maxId)
     maxId = item.id;
 
-  $('.message-list').append("<div class='message-item'><span class='message-name'>" + item.name + 
+  $('.message-list').prepend("<div class='message-item'><span class='message-name'>" + item.name + 
     ": </span><span class='message-text'>" + item.text + "</span</div>");
+}
+
+function theCoachSays()
+{
+  $('.the-coach').addClass('talking');
+  $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
+  $('.the-coach-says').show();
+  setTimeout(function(){
+    $('.the-coach').removeClass('talking');
+    $('.the-coach-says').hide();
+  }, 2000 );
 }
 
 var messageList = [];
 var maxId = -1;
+var coachMessages = [
+  "Work on it harder soldier!",
+  "What are you, a chicken?",
+  "I really need a cheeseburger right now....",
+  "You're doing well!  Just kidding, you're performing like crap.",
+  "C'mon man, I've seen babies performing better.",
+  "Hello World!",
+  "Prove P = NP next!",
+  "Man, this hackathon is kinda long, dontcha think?"
+]
 
 var tasklist = [];
 var task1 = {
