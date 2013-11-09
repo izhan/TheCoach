@@ -56,9 +56,6 @@ function transitionToCoach()
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   theCoachSays();
-  window.setInterval(function(){
-    theCoachSays();
-  }, 4500);
   //getMessages();
 }
 
@@ -86,15 +83,45 @@ function appendMessage(item)
     ": </span><span class='message-text'>" + item.text + "</span</div>");
 }
 
-function theCoachSays()
+// accepts a message.  if no message, then random talks.
+function theCoachSays(message)
 {
-  $('.the-coach').addClass('talking');
-  $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
-  $('.the-coach-says').show();
-  setTimeout(function(){
-    $('.the-coach').removeClass('talking');
-    $('.the-coach-says').hide();
-  }, 2000 );
+  if (message)
+  {
+    window.clearInterval(coachTimer);
+    $('.the-coach').addClass('talking');
+    $('.the-coach-says').html(message);
+    $('.the-coach-says').show();
+    setTimeout(function(){
+      $('.the-coach').removeClass('talking');
+      $('.the-coach-says').hide();
+      randomTalking();
+    }, 2000 );
+  }
+  else {
+    window.clearInterval(coachTimer);
+    $('.the-coach').addClass('talking');
+    $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
+    $('.the-coach-says').show();
+    setTimeout(function(){
+      $('.the-coach').removeClass('talking');
+      $('.the-coach-says').hide();
+    }, 2000 );
+    randomTalking();
+  }
+}
+// Coach says random stuff
+function randomTalking()
+{
+  coachTimer = setInterval(function(){
+    $('.the-coach').addClass('talking');
+    $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
+    $('.the-coach-says').show();
+    setTimeout(function(){
+      $('.the-coach').removeClass('talking');
+      $('.the-coach-says').hide();
+    }, 2000 );
+  }, 4500); 
 }
 
 var messageList = [];
@@ -111,6 +138,7 @@ var coachMessages = [
 ]
 
 var tasklist = [];
+var coachTimer;
 var task1 = {
   name: "Study for ORF 309",
   time: 5000,
