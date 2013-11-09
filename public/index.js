@@ -51,7 +51,7 @@ function getMessages()
             message.text = data[i].fields.motivation_text;
             appendMessage(message);
         }
-    }, dataType: 'json', complete: getMessages, timeout: 1000 });
+    }, dataType: 'json', complete: getMessages, timeout: 10000 });
 }
 
 // call when user presses on lets go
