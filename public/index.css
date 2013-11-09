@@ -7,9 +7,9 @@
 }
 .initial-page {
   background:red;
-  display: none;
 }
 .coach-page {
+  display: none;
   background: #FAFAFF;
 }
 

@@ -6,7 +6,22 @@ $(function(){
 
   appendTask(task1);
   appendTask(task2);
-  transitionToCoach();
+  //transitionToCoach();
+  $('.add-task').on('click', function(){
+  	var hours = $("hours").val();
+  	var mins = $("minutes").val();
+  	var secs = $("seconds").val();
+  	if (onlyNumbers(hours, mins, secs)) {
+  		alert("Please insert only numbers");
+  	}
+  	var tasks = $("task").val();
+
+  	task=new Object();
+  	task.hour=hours;
+  	task.minute=mins;
+  	task.seconds=secs;
+  	task.taskname=tasks;
+  })
 });
 
 // call when user presses on lets go
@@ -47,3 +62,9 @@ var task2 = {
   minutes: 13,
   seconds: 15
 };
+
+function onlyNumbers(a,b,c) {
+	return !NaN(parseInt(a)) && isFinite(a) 
+	&& !NaN(parseInt(b)) && isFinite(b)
+	&& !NaN(parseInt(c)) && isFinite(c);
+}
