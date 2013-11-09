@@ -40,13 +40,14 @@ function getMessages()
       data = JSON.parse(data);
       // sanitize the data into valid objects
       for(var i = 0; i < data.length; i++) {
-          var message = {"id": "", "name": "", "message": ""};
+          var message = {"id": "", "name": "", "message": "", "image_url": ""};
           message.id = data[i].pk;
           message.name = data[i].fields.name;
           message.text = data[i].fields.motivation_text;
+          message.image_url = data[i].fields.image_url;
           appendMessage(message);
       }
-  }, dataType: 'json', complete: getMessages, timeout: 10000 });
+  }, dataType: 'json'});
 }
 
 // call when user presses on lets go
@@ -56,7 +57,13 @@ function transitionToCoach()
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   theCoachSays();
+  window.setInterval(function(){
+    theCoachSays();
+  }, 4500);
   //getMessages();
+  window.setInterval(function() {
+      //getMessages();
+  }, 60000);
 }
 
 function appendTask(item)
@@ -67,7 +74,7 @@ function appendTask(item)
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
-  $('.front-list').prepend("<div class='front-item'><div class='checkbox'></div><div class='front-wrapper'>" +
+  $('.front-list').prepend("<div class='checkbox'></div><div class='front-item'><div class='front-wrapper'>" +
      "<span class='front-name'>" + item.name + " </span><span class='front-time'>" +
   	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.hours + " </span></span>" +
