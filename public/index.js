@@ -24,6 +24,20 @@ $(function(){
   })
 });
 
+function getMessages()
+{
+    $.get("query/?id=" + max, function( data ) {
+        // sanitize the data into valid objects
+        for(var i = 0; i < data.length; i++) {
+            var message = {"id": "", "name": "", "message": ""};
+            message.id = data[i].pk;
+            message.name = data[i].fields.name;
+            message.text =data[i].fields.motivation_text;
+            appendMessage(message);
+        }
+    }
+}
+
 // call when user presses on lets go
 function transitionToCoach()
 {
