@@ -6,23 +6,27 @@ $(function(){
 
   appendTask(task1);
   appendTask(task2);
-  transitionToCoach();
+  $('.coach-page').show();
   appendMessage(message1);
   appendMessage(message2);
   $('.add-task').on('click', function(){
-  	var hours = $("hours").val();
-  	var mins = $("minutes").val();
-  	var secs = $("seconds").val();
-  	if (onlyNumbers(hours, mins, secs)) {
+  	var hour=$("#hours").val();
+  	var mins=$("#minutes").val();
+  	var secs=$("#seconds").val();
+  	if (!onlyNumbers(hour, mins, secs)) {
   		alert("Please insert only numbers");
+  		return;
   	}
-  	var tasks = $("task").val();
+  	var tasks = $("#task").val();
 
-  	task=new Object();
-  	task.hour=hours;
-  	task.minute=mins;
-  	task.seconds=secs;
-  	task.taskname=tasks;
+  	var task = {
+  	hours: hour,
+  	minutes: mins,
+  	seconds: secs,
+  	name: tasks,
+  	time: convertMS(hour,mins,secs),
+  	};
+  	appendTask(task);
   })
 });
 
@@ -55,6 +59,11 @@ function appendTask(item)
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
+  $('.front-list').append("<div class='front-item'><span class='front-name'>" + item.name + " </span><span class='front-time'>" +
+  	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
+  	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.hours + " </span></span>" +
+  	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.hours + " </span></span>" +
+  	 "</span></div>");
 }
 
 function appendTime(hours, minutes, seconds)
@@ -102,7 +111,11 @@ var message2 = {
 };
 
 function onlyNumbers(a,b,c) {
-	return !NaN(parseInt(a)) && isFinite(a) 
-	&& !NaN(parseInt(b)) && isFinite(b)
-	&& !NaN(parseInt(c)) && isFinite(c);
+	return !isNaN(a) && isFinite(parseFloat(a)) 
+	&& !isNaN(b) && isFinite(parseFloat(b))
+	&& !isNaN(c) && isFinite(parseFloat(c));
+}
+
+function convertMS(a,b,c) {
+	return parseInt(a)*3600000 + parseInt(b)*60000 + parseInt(c)*1000;
 }
