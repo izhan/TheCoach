@@ -88,11 +88,20 @@ p, span, div, section {
   top: 50%;
   margin-top: -16px;
 }
+.front-tasks {
+  background: #b2d4dc;
+  border: 4px solid #3e6372;
+  padding: 20px;
+  margin: 10px 300px 10px 300px;
+}
 .front-list {
   text-align: center;
 }
 .front-item{
-  
+  background: #b2d4dc;
+  border: 4px solid #3e6372;
+  padding: 10px;
+  margin: 10px 100px 10px 100px;
 }
 
 .the-coach-wrapper{
