@@ -28,7 +28,8 @@ $(function(){
 
 function getMessages()
 {
-    $.get("query/?id=" + max, function( data ) {
+    $.ajax({ url: "query/?id=" + maxId, success: function( data ) {
+        data = JSON.parse(data);
         // sanitize the data into valid objects
         for(var i = 0; i < data.length; i++) {
             var message = {"id": "", "name": "", "message": ""};
@@ -37,7 +38,7 @@ function getMessages()
             message.text = data[i].fields.motivation_text;
             appendMessage(message);
         }
-    });
+    }, dataType: 'json', complete: getMessages, timeout: 1000 });
 }
 
 // call when user presses on lets go
@@ -45,6 +46,7 @@ function transitionToCoach()
 {
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
+  getMessages();
 }
 
 function appendTask(item)
