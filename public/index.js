@@ -1,7 +1,8 @@
 $(function(){
 
   $('.show-coach').on('click', function(){
-    transitionToCoach();
+    $('.coach-page').show();
+    startTimer();
   });
 
   appendTask(task1);
@@ -9,6 +10,11 @@ $(function(){
 
   appendMessage(message1);
   appendMessage(message2);
+  
+  theCoachSays();
+  window.setInterval(function(){
+    theCoachSays();
+  }, 4500);
 
   $('.add-task').on('click', function(){
   	var hour=$("#hours").val();
@@ -52,18 +58,15 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
-  $('.initial-page').hide();
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
-  theCoachSays();
-  window.setInterval(function(){
-    theCoachSays();
-  }, 4500);
+
   //getMessages();
 }
 
 function appendTask(item)
 {
+
   tasklist.push(item);
   $('.task-list').append("<div class='task-item'><span class='task-name'>" + item.name + " </span><div class='task-time'>" +
     "<span class='task-time-label'>Hour: <span class='task-time-number'>" + item.hours + " </span></span>" +
@@ -72,8 +75,8 @@ function appendTask(item)
     "</div></div>");
   $('.front-list').prepend("<div class='front-item'><span class='front-name'>" + item.name + " </span><span class='front-time'>" +
   	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
-  	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.hours + " </span></span>" +
-  	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.hours + " </span></span>" +
+  	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.minutes + " </span></span>" +
+  	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.seconds + " </span></span>" +
   	 "</span></div>");
 }
 
@@ -114,16 +117,16 @@ var tasklist = [];
 var task1 = {
   name: "Study for ORF 309",
   time: 5000,
-  hours: 10,
-  minutes: 13,
-  seconds: 15
+  hours: 0,
+  minutes: 0,
+  seconds: 5
 };
 var task2 = {
   name: "Finish drafting my Hackathon idea",
   time: 10000,
   hours: 10,
-  minutes: 13,
-  seconds: 15
+  minutes: 13,  
+  seconds: 20
 };
 var message1 = {
   id: 1,
@@ -136,12 +139,31 @@ var message2 = {
   text: "Dude, like thats just your opinion man."
 };
 
-function onlyNumbers(a,b,c) {
+function onlyNumbers(a,b,c) 
+{
 	return !isNaN(a) && isFinite(parseFloat(a)) 
 	&& !isNaN(b) && isFinite(parseFloat(b))
 	&& !isNaN(c) && isFinite(parseFloat(c));
 }
 
-function convertMS(a,b,c) {
+function convertMS(a,b,c) 
+{
 	return parseInt(a)*3600000 + parseInt(b)*60000 + parseInt(c)*1000;
+}
+
+var taskNum = 0;
+
+function startTimer() 
+{
+  if (taskNum < tasklist.length) {
+    var task = tasklist[taskNum];
+      $($('.task-time')[taskNum]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
+        '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
+  }
+}
+
+function expired() {
+  taskNum++;
+  $($('.task-time')[taskNum]).countdown('destroy');
+  startTimer();
 }
