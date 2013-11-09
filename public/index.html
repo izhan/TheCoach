@@ -6,12 +6,16 @@
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="index.js"></script>
   <link rel="stylesheet" href="index.css" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="jquery.countdown.css"> 
   <script type="text/javascript" src="jquery.countdown.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <section class="initial-page">
+    <div class="front-background">
+      <div class="front-background-sky"></div>
+      <div class="front-background-grass"></div>
+      <div class="front-background-ground"></div>
+    </div>
     <div class="lame-coach-wrapper">
       <div class="lame-coach"></div>
       <div class="the-lame-coach-says">
@@ -23,14 +27,14 @@
       </div>
     </div>
     <div class="clipboard">
-    	<div class="front-tasks"> Task: <input type="text" class="task-field" id="task" name="task"><br>
+    	<div class="front-tasks"> Task: <input type="text" class="task-field" id="task" name="task">
+        <br>
         Hours: <input type="text" class="task-field" id="hours" name="hours" value="" maxlength="2">
         minutes: <input type="text" class="task-field" id="minutes" name="minutes" value="" maxlength="2">
         seconds: <input type="text" class="task-field" id="seconds" name="seconds" value="" maxlength="2">
       <a class="add-task">Add task</a>
       </select>
     </div>
-    <br>Tasks so far: <br>
     <div class="front-list"></div>
     </div>
   </section>

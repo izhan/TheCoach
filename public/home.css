@@ -1,6 +1,7 @@
 body {
   background: #2C7499;
-  padding: 50px;
+  margin: 0;
+  padding: 0;
 }
 .enter {
   color: white;
@@ -20,29 +21,42 @@ body {
   right: 1px;
 }
 .lame-coach {
+  position: absolute;
+  margin: 50px;
+  z-index: 10;
   display: inline-block;
   background-image: url('coach-before.png');
-  height: 500px;
-  width: 100%;
+  height: 525px;
+  width: 400px;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .introduction-wrapper {
   position: absolute;
-  top: 50px;
-  left: 400px;
+  top: 25px;
+  left: 475px;
   text-align: center;
 }
 .introduction {
   text-align: center;
   display: block;
   color: #eee;
-  font-size: 75px;
+  font-size: 65px;
 }
 .the-coach {
   padding: 25px;
   text-align: center;
   display: block;
   color: white;
-  font-size: 125px;
+  font-size: 110px;
+}
+.floor {
+  z-index: 9;
+  background: #A0522D;
+  height: 125px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
