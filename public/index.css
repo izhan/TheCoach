@@ -22,16 +22,16 @@ p, span, div, section {
 
 /* front-page */
 .front-tasks {
-  background: #b2d4dc;
-  border: 4px solid #3e6372;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
   padding: 20px;
 }
 .front-list {
   text-align: center;
 }
 .front-item{
-  background: #b2d4dc;
-  border: 4px solid #3e6372;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
   padding: 10px;
   margin: 10px 100px 10px 100px;
 }
@@ -74,7 +74,7 @@ p, span, div, section {
 
 /* begin task list */
 .task-list-wrapper {
-  background: #B2D4DC;
+  background: #B7F5FF;
   width: 300px;
   position: absolute;
   left: 0;
@@ -98,7 +98,7 @@ p, span, div, section {
   color: #2A3A48;
 }
 .task-time {
-  color: #3E6372;
+  color: #1CAF9A;
 }
 
 .message-list {
@@ -110,8 +110,8 @@ p, span, div, section {
 }
 .message-item {
   position: relative;
-  background: #b2d4dc;
-  border: 4px solid #3e6372;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
   padding: 20px;
   margin: 10px 50px 10px 100px;
   border-radius: 5px;
@@ -127,14 +127,14 @@ p, span, div, section {
 }
 .message-item:after {
   border-color: rgba(178, 212, 220, 0);
-  border-right-color: #b2d4dc;
+  border-right-color: #B7F5FF;
   border-width: 10px;
   top: 50%;
   margin-top: -10px;
 }
 .message-item:before {
   border-color: rgba(62, 99, 114, 0);
-  border-right-color: #3e6372;
+  border-right-color: #1CAF9A;
   border-width: 16px;
   top: 50%;
   margin-top: -16px;
@@ -207,8 +207,8 @@ p, span, div, section {
   display: none;
   position: relative;
   height: 100px;
-  background: #b2d4dc;
-  border: 4px solid #3e6372;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
   padding: 20px;
   margin: 25px 25px 0 185px;
   border-radius: 5px;
@@ -224,14 +224,14 @@ p, span, div, section {
 }
 .the-coach-says:after {
   border-color: rgba(178, 212, 220, 0);
-  border-right-color: #b2d4dc;
+  border-right-color: #B7F5FF;
   border-width: 10px;
   top: 50%;
   margin-top: -10px;
 }
 .the-coach-says:before {
   border-color: rgba(62, 99, 114, 0);
-  border-right-color: #3e6372;
+  border-right-color: #1CAF9A;
   border-width: 16px;
   top: 50%;
   margin-top: -16px;
