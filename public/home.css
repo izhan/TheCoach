@@ -31,6 +31,17 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.lame-coach-blinking {
+  display: none;
+  position: absolute;
+  margin: 50px;
+  z-index: 10;
+  background-image: url('coach-before-blink.png');
+  height: 525px;
+  width: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .introduction-wrapper {
   position: absolute;
   top: 25px;
