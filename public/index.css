@@ -14,27 +14,63 @@
   background: #FAFAFF;
 }
 
+/* BEGIN general css (not document-section specific) */
 p, span, div, section {
   box-sizing:border-box;
   -moz-box-sizing:border-box;
   font-family: "Helvetica Neue";
 }
+/* needs to also additionally modify padding and font-size */
+.button {
+  background-color: #FF4B00;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.button:active {
+  top: 1px;
+  right: 1px;
+  border: none;
+}
+.checkbox {
+  height: 35px;
+  width: 35px;
+  border: 2px red;
+  border-style: solid;
+  display: inline-block;
+  margin: 10px;
+}
 
 /* front-page */
 .front-tasks {
-  background: #B7F5FF;
-  border: 4px solid #1CAF9A;
   padding: 20px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 40px;
 }
 .front-list {
   text-align: center;
 }
 .front-item{
-  background: #B7F5FF;
-  border: 4px solid #1CAF9A;
   padding: 10px;
-  margin: 10px 100px 10px 100px;
+  width: 500px;
 }
+.front-wrapper {
+
+}
+.task-field {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 40px;
+  width: 1em;
+  background-color: transparent; 
+  border-style: dashed; 
+  border-width: 0px 0px 1px 0px; 
+}
+#task {
+  width: 9em;
+}
+
 .clipboard {
   position: absolute;
   padding: 130px 75px 0 75px;
@@ -70,6 +106,28 @@ p, span, div, section {
   padding-left: 10px;
   font-size: 55px;
   z-index: 5;
+}
+.ready-to-go {
+  display: none;
+  font-size: 30px;
+  text-align: left;
+}
+.show-coach {
+  font-size: 16px;
+  color: white;
+  padding: 8px 20px;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+.add-task {
+  color: #FF4B00;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+.add-task:hover {
+  text-decoration: underline;
 }
 
 /* begin task list */
@@ -107,37 +165,6 @@ p, span, div, section {
   top: 250px;
   bottom: 0;
   right: 0;
-}
-.message-item {
-  position: relative;
-  background: #B7F5FF;
-  border: 4px solid #1CAF9A;
-  padding: 20px;
-  margin: 10px 50px 10px 100px;
-  border-radius: 5px;
-}
-.message-item:after, .message-item:before {
-  right: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.message-item:after {
-  border-color: rgba(178, 212, 220, 0);
-  border-right-color: #B7F5FF;
-  border-width: 10px;
-  top: 50%;
-  margin-top: -10px;
-}
-.message-item:before {
-  border-color: rgba(62, 99, 114, 0);
-  border-right-color: #1CAF9A;
-  border-width: 16px;
-  top: 50%;
-  margin-top: -16px;
 }
 
 /* start background */
@@ -203,6 +230,8 @@ p, span, div, section {
   background-image: url('coach-after-head-talking.png');
 }
 
+/* BUBBLE BOXES FOR TALKING */
+/* cool coach */
 .the-coach-says {
   display: none;
   position: relative;
@@ -230,6 +259,73 @@ p, span, div, section {
   margin-top: -10px;
 }
 .the-coach-says:before {
+  border-color: rgba(62, 99, 114, 0);
+  border-right-color: #1CAF9A;
+  border-width: 16px;
+  top: 50%;
+  margin-top: -16px;
+}
+/* lame coach bubble */
+.the-lame-coach-says {
+  display: inline-block;
+  position: relative;
+  height: 75px;
+  vertical-align: top;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
+  padding: 12px 25px;
+  width: 400px;
+  border-radius: 5px;
+}
+.the-lame-coach-says:after, .the-lame-coach-says:before {
+  right: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.the-lame-coach-says:after {
+  border-color: rgba(178, 212, 220, 0);
+  border-right-color: #B7F5FF;
+  border-width: 10px;
+  top: 50%;
+  margin-top: -10px;
+}
+.the-lame-coach-says:before {
+  border-color: rgba(62, 99, 114, 0);
+  border-right-color: #1CAF9A;
+  border-width: 16px;
+  top: 50%;
+  margin-top: -16px;
+}
+/* message items */
+.message-item {
+  position: relative;
+  background: #B7F5FF;
+  border: 4px solid #1CAF9A;
+  padding: 20px;
+  margin: 10px 50px 10px 100px;
+  border-radius: 5px;
+}
+.message-item:after, .message-item:before {
+  right: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.message-item:after {
+  border-color: rgba(178, 212, 220, 0);
+  border-right-color: #B7F5FF;
+  border-width: 10px;
+  top: 50%;
+  margin-top: -10px;
+}
+.message-item:before {
   border-color: rgba(62, 99, 114, 0);
   border-right-color: #1CAF9A;
   border-width: 16px;

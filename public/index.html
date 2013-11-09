@@ -8,22 +8,28 @@
   <link rel="stylesheet" href="index.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="jquery.countdown.css"> 
   <script type="text/javascript" src="jquery.countdown.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <section class="initial-page">
     <div class="lame-coach-wrapper">
       <div class="lame-coach"></div>
-      <span class="lame-coach-message">How can I help?</span>
+      <div class="the-lame-coach-says">
+        <span class="lame-coach-message">How can I help?</span>
+        <div class="ready-to-go">
+          Ready to go?
+          <a class="button show-coach">Let's do this.</a>
+        </div>
+      </div>
     </div>
     <div class="clipboard">
-    	<div class="front-tasks"> Task: <input type="text" id="task" name="task"><br>
-        Hours: <input type="text" id="hours" name="hours" maxlength="2">
-        minutes: <input type="text" id="minutes" name="minutes" maxlength="2">
-        seconds: <input type="text" id="seconds" name="seconds" maxlength="2"><br>
-      <button class="add-task">Add task</button>
+    	<div class="front-tasks"> Task: <input type="text" class="task-field" id="task" name="task"><br>
+        Hours: <input type="text" class="task-field" id="hours" name="hours" value="" maxlength="2">
+        minutes: <input type="text" class="task-field" id="minutes" name="minutes" value="" maxlength="2">
+        seconds: <input type="text" class="task-field" id="seconds" name="seconds" value="" maxlength="2">
+      <a class="add-task">Add task</a>
       </select>
     </div>
-    <button class="show-coach">Let's Go</button>
     <br>Tasks so far: <br>
     <div class="front-list"></div>
     </div>
@@ -40,7 +46,7 @@
         <div class="background-ground"></div>
       </div>
       <div class="the-coach-wrapper">
-        <div class="the-coach talking"></div>
+        <div class="the-coach"></div>
         <div class="the-coach-says"></div>
       </div>
       <div class="message-list">
