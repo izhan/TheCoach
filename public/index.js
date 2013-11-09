@@ -68,15 +68,18 @@ function transitionToCoach()
   }, 60000);
 }
 
+var count = 0;
 function appendTask(item)
 {
 
   tasklist.push(item);
-  $('.task-list').append("<div class='task-item'><span class='task-name'>" + item.name + " </span><div class='task-time'>" +
+  $('.task-list').append("<div class='task-item'><div class='checkbox' onclick='taskFinished(" + count + ")'></div><span class='task-name'>" + 
+    item.name + " </span><div class='task-time'>" +
     "<span class='task-time-label'>Hour: <span class='task-time-number'>" + item.hours + " </span></span>" +
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
+  count++;
   $('.front-list').prepend("<div class='checkbox'></div><div class='front-item'><div class='front-wrapper'>" +
      "<span class='front-name'>" + item.name + " </span><span class='front-time'>" +
   	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
@@ -208,6 +211,12 @@ function startTimer()
 
 function expired() {
   taskNum++;
-  $($('.task-time')[taskNum]).countdown('destroy');
+  startTimer();
+}
+
+function taskFinished(numTask) {
+  $($('.task-item')[numTask]).fadeOut(1000);
+  $($('.task-time')[numTask]).countdown('destroy');
+  taskNum++;
   startTimer();
 }
