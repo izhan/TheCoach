@@ -35,12 +35,11 @@ p, span, div, section {
   border: none;
 }
 .checkbox {
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   border: 2px red;
   border-style: solid;
   display: inline-block;
-  margin: 10px;
 }
 
 /* front-page */
@@ -54,10 +53,22 @@ p, span, div, section {
 }
 .front-item{
   padding: 10px;
-  width: 500px;
+  width: 600px;
+  text-align: left;
 }
 .front-wrapper {
-
+  width: 480px;
+  margin-left: 15px;
+  display: inline-block;
+  vertical-align: top;
+}
+.front-name {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 35px;
+}
+.front-time-label, .front-time-number {
+  font-size: 25px;
+  font-family: 'Reenie Beanie', cursive;
 }
 .task-field {
   font-family: 'Reenie Beanie', cursive;

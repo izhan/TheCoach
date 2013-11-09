@@ -77,9 +77,9 @@ function appendTask(item)
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
-  $('.front-list').prepend("<div class='checkbox'></div><div class='front-item'><div class='front-wrapper'>" +
-     "<span class='front-name'>" + item.name + " </span><span class='front-time'>" +
-  	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
+  $('.front-list').prepend("<div class='front-item'><div class='checkbox'></div><div class='front-wrapper'>" +
+     "<span class='front-name'>" + item.name + " </span><span class='front-time'><br>" +
+  	 "<span class='front-time-label'>Hours: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.minutes + " </span></span>" +
   	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.seconds + " </span></span>" +
   	 "</span></div></div>");
