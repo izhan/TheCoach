@@ -6,7 +6,7 @@ $(function(){
 
   appendTask(task1);
   appendTask(task2);
-  $('.coach-page').show();
+
   appendMessage(message1);
   appendMessage(message2);
   $('.add-task').on('click', function(){
@@ -18,7 +18,6 @@ $(function(){
   		return;
   	}
   	var tasks = $("#task").val();
-
   	var task = {
   	hours: hour,
   	minutes: mins,
@@ -27,6 +26,10 @@ $(function(){
   	time: convertMS(hour,mins,secs),
   	};
   	appendTask(task);
+  	$("#hours").val('');
+  	$("#task").val('');
+  	$("#minutes").val('');
+  	$("#seconds").val('');
   })
 });
 
@@ -59,7 +62,7 @@ function appendTask(item)
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
     "<span class='task-time-label'>Sec: <span class='task-time-number'>" + item.seconds + " </span></span>" +
     "</div></div>");
-  $('.front-list').append("<div class='front-item'><span class='front-name'>" + item.name + " </span><span class='front-time'>" +
+  $('.front-list').prepend("<div class='front-item'><span class='front-name'>" + item.name + " </span><span class='front-time'>" +
   	 "<span class='front-time-label'>Hour: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.hours + " </span></span>" +
   	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.hours + " </span></span>" +

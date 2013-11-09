@@ -6,7 +6,8 @@
   bottom: 0;
 }
 .initial-page {
-  background:red;
+  background: #FAFAFF;
+  text-align: center;
 }
 .coach-page {
   display: none;
@@ -86,4 +87,9 @@ p, span, div {
   border-width: 16px;
   top: 50%;
   margin-top: -16px;
+}
+.front-list {
+  text-align: center;
+}
+.front-item{
 }
