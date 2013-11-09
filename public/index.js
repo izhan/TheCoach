@@ -40,13 +40,14 @@ function getMessages()
         data = JSON.parse(data);
         // sanitize the data into valid objects
         for(var i = 0; i < data.length; i++) {
-            var message = {"id": "", "name": "", "message": ""};
+            var message = {"id": "", "name": "", "message": "", "image_url": ""};
             message.id = data[i].pk;
             message.name = data[i].fields.name;
             message.text = data[i].fields.motivation_text;
+            message.image_url = data[i].fields.image_url;
             appendMessage(message);
         }
-    }, dataType: 'json', complete: getMessages, timeout: 10000 });
+    }, dataType: 'json'});
 }
 
 // call when user presses on lets go
@@ -59,7 +60,10 @@ function transitionToCoach()
   window.setInterval(function(){
     theCoachSays();
   }, 4500);
-  //getMessages();
+  getMessages();
+  window.setInterval(function() {
+      getMessages();
+  }, 60000);
 }
 
 function appendTask(item)
@@ -126,12 +130,12 @@ var task2 = {
   seconds: 15
 };
 var message1 = {
-  id: 1,
+  id: 0,
   name: "Harold Wu",
   text: "Hey man, I hope you are doing well!  You got this!"
 };
 var message2 = {
-  id: 2,
+  id: 0,
   name: "The Dude",
   text: "Dude, like thats just your opinion man."
 };
