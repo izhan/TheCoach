@@ -93,6 +93,7 @@ p, span, div, section {
   width: 700px;
   margin: 0 auto;
   max-width: 700px;
+  z-index: 4;
   background-image: url('clipboard.png');
   background-size: 700px;
   background-repeat: no-repeat;
@@ -215,6 +216,33 @@ p, span, div, section {
   bottom: 0;
   z-index: 0;
 }
+.front-background {
+
+}
+.front-background-sky {
+  background-image: url('sky.png');
+  height: 500px;
+  background-size: 1000px;
+  -webkit-animation: slide 45s linear infinite;
+}
+.front-background-grass {
+  background-image: url('grass.png');
+  height: 50px;
+  position: relative;
+  z-index: 1;
+}
+.front-background-ground {
+  background-image: url('ground.png');
+  position: absolute;
+  top: 540px;
+  background-image: url('ground.png');
+  position: absolute;
+  left:0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
 
 /* start coaching area */
 .the-coach-wrapper{
