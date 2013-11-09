@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Encourage Your Friends</title>
+  </head>
+  <body>
+
+    <form method="post" action="{% url 'motivate' %}">
+      {% csrf_token %}
+      <div>
+        <span>Name: </span>
+        <input type="text" name="name" placeholder="Enter your Name" />
+      </div>
+      <div>
+        <span>Message: </span>
+        <textarea name="text"></textarea>
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
+
+  </body>
+</html
