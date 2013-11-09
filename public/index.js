@@ -1,8 +1,8 @@
 $(function(){
 
   $('.show-coach').on('click', function(){
-    $('.coach-page').show();
     startTimer();
+    transitionToCoach();
   });
 
   appendTask(task1);
@@ -61,7 +61,7 @@ function transitionToCoach()
 {
   $('.coach-page').show();
   $('.task-number').html("Number of Tasks: " + tasklist.length);
-
+  $('.initial-page').hide();
   //getMessages();
   window.setInterval(function() {
       //getMessages();
@@ -97,8 +97,8 @@ function appendMessage(item)
   if (item.id > maxId)
     maxId = item.id;
 
-  $('.message-list').prepend("<div class='message-item'><span class='message-name'>" + item.name + 
-    ": </span><span class='message-text'>" + item.text + "</span</div>");
+  $('.message-list').prepend($("<div class='message-item'><span class='message-name'>" + item.name + 
+    ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn('slow'));
 }
 
 // accepts a message.  if no message, then random talks.
