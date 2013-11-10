@@ -15,7 +15,7 @@
 }
 .break-page {
   display: none;
-  background: red;
+  background: #33CCFF;
   z-index: 100;
 }
 
@@ -322,6 +322,13 @@ p, span, div, section {
   right: 0;
   padding: 25px;
 }
+.the-break-coach-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 15px;
+}
 
 .the-coach {
   position: absolute;
@@ -332,11 +339,21 @@ p, span, div, section {
   background-image: url('coach-after-head.png');
 }
 
-.the-coach.talking{
+.the-break-coach {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 11;
+  background-size: cover;
+  background-image: url('coach-after-head.png');
+}
+
+.the-coach.talking, .the-break-coach{
   background: transparent;
   background-size: cover;
   background-image: url('coach-after-head-talking.png');
 }
+
 
 /* BUBBLE BOXES FOR TALKING */
 /* cool coach */
@@ -406,6 +423,13 @@ p, span, div, section {
   top: 50%;
   margin-top: -16px;
 }
+
+.the-break-coach-says {
+  top: 10px;
+  left: 125px;
+  font-size: 30px;
+}
+
 /* message items */
 .message-item {
   position: relative;
@@ -467,4 +491,60 @@ p, span, div, section {
 }
 .person-body-2 {
   background-image: url('person-body-2.png');
+}
+
+/* begin break page */
+.television-wrapper {
+  position: absolute;
+  top: 125px;
+  left: 50px;
+  right: 50px;
+  bottom: 0;
+  width: 1150px;
+}
+.television-iframe {
+  display: block;
+  left: 64px;
+  position: relative;
+  width: 76%;
+  bottom: 15px;
+  z-index: 4;
+}
+.television {
+  width: 100%;
+  height: 100%;
+  bottom: 15px;
+  position: absolute;
+  background-image: url('television.png');
+  background-size: 1150px 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+.floor {
+  background: #A0522D;
+  height: 125px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.finishBreak, .nextVid {
+  position: absolute;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  background-color: #FF4B00;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.finishBreak {
+  right: 80px;
+  top: 36px;
+}
+.nextVid {
+  right: 230px;
+  top: 36px;
 }
