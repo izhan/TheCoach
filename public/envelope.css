@@ -1,4 +1,14 @@
 /* Adopted from the envelope on www.irvinzhan.com */
+
+.master-envelope
+{
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 550px;
+}
+
 .contact-title-wrapper {
   position: absolute;
   width: 100%;
@@ -370,4 +380,22 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background: #783839;
+}
+
+
+/* custom css for The Coach */
+.fieldset-contact legend {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#letter .x-button {
+  cursor: pointer;
+}
+input[type="text"] {
+  font-size: 20px;
+}
+textarea {
+  font-size: 20px;
 }
