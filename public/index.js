@@ -176,7 +176,7 @@ var task1 = {
   time: 5000,
   hours: 0,
   minutes: 0,
-  seconds: 5
+  seconds: 8
 };
 var task2 = {
   name: "Finish drafting my Hackathon idea",
@@ -209,39 +209,40 @@ function convertMS(a,b,c)
 }
 
 var taskNum = 0;
-
 function startTimer() 
 {
-  if (taskNum < tasklist.length) {
-    var task = tasklist[taskNum];
-      $($('.task-time')[taskNum]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
-        '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
+  for (var i = 0; i < tasklist.length; i++) {
+    if (finishedlist[i] == 0) {
+      var task = tasklist[i];
+      $($('.task-time')[i]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
+      '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
+      return;
+    }
   }
 }
 
 function expired() {
-  while (finishedlist[taskNum] == 1 && taskNum < tasklist.length - 1) {
-    taskNum++;
-  }
   finishedlist[taskNum] = 1;
   startTimer();
+  taskNum++;
 }
 
 var finished = 0;
 
 function taskFinished(numTask) {
+  theCoachSays("Good job!");
   finished++;
   if (finished == tasklist.length) {
+    theCoachSays("finished!");
     allDone();
+  }
+  if (numTask == (taskNum)) {
+    expired();
   }
   $('.task-number').html("Number of Tasks: " + (tasklist.length - finished));
   $($('.task-item')[numTask]).fadeOut(1000);
   $($('.task-time')[numTask]).countdown('destroy');
   finishedlist[numTask] = 1;
-  if (numTask == taskNum) {
-    startTimer(); 
-  }
-  taskNum++;
 }
 
 function allDone() {
