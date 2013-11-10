@@ -385,3 +385,37 @@ function getNextVid() {
   counter++;
   $('iframe').attr('src', urls[counter % urls.length]);
 }
+
+// presentation functions
+function populateTaskList() {
+
+  var task = {
+    hours: 0,
+    minutes: 0,
+    seconds: 10,
+    name: 'abhi',
+    time: 0,
+  };
+  appendTask(task);
+
+  var task = {
+    hours: 0,
+    minutes: 10,
+    seconds: 50,
+    name: 'abhi',
+    time: 0,
+  };
+  appendTask(task);
+
+
+  for (var i = 0; i < 10; i++) {
+    var task = {
+        hours: 0,
+        minutes: 10,
+        seconds: 50,
+        name: 'Panda'+ i,
+        time: 0,
+    };
+    appendTask(task);
+  }
+}
