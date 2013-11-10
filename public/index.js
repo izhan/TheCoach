@@ -11,9 +11,6 @@ $(function(){
   appendMessage(message1);
   appendMessage(message2);
   theCoachSays();
-  window.setInterval(function(){
-    theCoachSays();
-  }, 4500);
 
   $('.add-task').on('click', function(){
   	var hour=$("#hours").val();
@@ -148,12 +145,19 @@ function theCoachSays(message)
     randomTalking();
   }
 }
+
+var currentDanger;
+var inDanger = true;
 // Coach says random stuff
 function randomTalking()
 {
   coachTimer = setInterval(function(){
     $('.the-coach').addClass('talking');
-    $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
+    if (inDanger) {
+      $('.the-coach-says').html(dangerMessages[Math.floor(Math.random()*dangerMessages.length)]);
+    } else {
+      $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
+    }
     $('.the-coach-says').show();
     setTimeout(function(){
       $('.the-coach').removeClass('talking');
@@ -182,7 +186,10 @@ var coachMessages = [
   "Hello World!",
   "Prove P = NP next!",
   "Man, this hackathon is kinda long, dontcha think?"
-]
+];
+var dangerMessages = [
+  "You're running out of time! Speed it up!"
+];
 
 var tasklist = [];
 
@@ -236,10 +243,18 @@ function startTimer()
 {
   for (var i = taskNum; i < tasklist.length; i++) {
     if (finishedlist[i] == 0) {
+      clearTimeout(currentDanger);
       taskNum = i;
       var task = tasklist[i];
       $($('.task-time')[i]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
+      var timeMS = convertMS(task.hours, task.minutes, task.seconds);
+      inDanger = true;
+      if (timeMS > 600000) {
+        inDanger = false;
+        setTimeout(function(){
+          inDanger = true;}, (timeMS - 600000));
+      }
       return;
     }
   }
@@ -254,11 +269,12 @@ function expired() {
 
 var finished = 0;
 
+/* Marking tasks finished */
 function taskFinished(numTask) {
   theCoachSays("Good job!");
   finished++;
   if (finished == tasklist.length) {
-    theCoachSays("finished!");
+    theCoachSays("Finished!");
     allDone();
   }
   if (numTask == (taskNum)) {
