@@ -16,8 +16,17 @@ $(function(){
   	var hour=$("#hours").val();
   	var mins=$("#minutes").val();
   	var secs=$("#seconds").val();
-  	if (!onlyNumbers(hour, mins, secs)) {
-  		alert("Please insert only numbers");
+    if (isFinite(parseFloat(hour)) || isFinite(parseFloat(mins)) || isFinite(parseFloat(secs)))
+    {
+      if(hour == "")
+        hour = 0;
+      if(mins == "")
+        mins = 0;
+      if(secs == "")
+        secs = 0;
+    }
+  	if (!validateTime(hour, mins, secs)) {
+  		alert("Please insert a valid time");
   		return;
   	}
   	var tasks = $("#task").val();
@@ -38,7 +47,7 @@ $(function(){
 
 function postMessage( message )
 {
-    $.post("query/", {msg: message});
+    $.get("post/?msg="+ message);
 }
 
 function getMessages()
@@ -60,6 +69,9 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
+  if (isSocial) {
+      postMessage('Cheer me on at: http://localhost:8000/motivate ' + time_min);
+  }
   $('.coach-page').fadeIn(1000);
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   $('.initial-page').hide();
@@ -176,6 +188,7 @@ var time_hours = date.getHours() - 1;
 var full_time = "" + time_hours + ":" + time_min + ":00";
 var messageList = [];
 var maxId = -1;
+var isSocial = true;
 var numberOfPersonOptions = 2;
 var coachMessages = [
   "Work on it harder soldier!",
@@ -222,8 +235,7 @@ var message2 = {
   image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
 };
 
-/* Checks three imputs contains numbers */
-function onlyNumbers(a,b,c) 
+function validateTime(a,b,c) 
 {
 	return !isNaN(a) && isFinite(parseFloat(a)) 
 	&& !isNaN(b) && isFinite(parseFloat(b))
@@ -262,6 +274,10 @@ function startTimer()
 
 /* Handling expiration of timers */
 function expired() {
+  if (isSocial) {
+      var text = $($('.task-name')[taskNum]).text();
+      postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
+  }
   finishedlist[taskNum] = 1;
   taskNum++;
   startTimer();
@@ -272,6 +288,10 @@ var finished = 0;
 /* Marking tasks finished */
 function taskFinished(numTask) {
   theCoachSays("Good job!");
+  if (isSocial) {
+    var text = $($('.task-name')[numTask]).text();
+    postMessage("I just finished my task: "+ text + "! Come and congratulate me!");
+  }
   finished++;
   if (finished == tasklist.length) {
     theCoachSays("Finished!");
