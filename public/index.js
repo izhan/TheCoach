@@ -208,9 +208,9 @@ var task1 = {
 var task2 = {
   name: "Finish drafting my Hackathon idea",
   time: 10000,
-  hours: 10,
-  minutes: 13,  
-  seconds: 20
+  hours: 0,
+  minutes: 0,  
+  seconds: 10
 };
 var message1 = {
   id: 0,
@@ -225,6 +225,7 @@ var message2 = {
   image_url: ""
 };
 
+/* Checks three imputs contains numbers */
 function onlyNumbers(a,b,c) 
 {
 	return !isNaN(a) && isFinite(parseFloat(a)) 
@@ -232,16 +233,20 @@ function onlyNumbers(a,b,c)
 	&& !isNaN(c) && isFinite(parseFloat(c));
 }
 
+/* convert time to MS */
 function convertMS(a,b,c) 
 {
 	return parseInt(a)*3600000 + parseInt(b)*60000 + parseInt(c)*1000;
 }
 
 var taskNum = 0;
+
+/* Used to start timers */
 function startTimer() 
 {
-  for (var i = 0; i < tasklist.length; i++) {
+  for (var i = taskNum; i < tasklist.length; i++) {
     if (finishedlist[i] == 0) {
+      taskNum = i;
       var task = tasklist[i];
       $($('.task-time')[i]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
@@ -250,10 +255,11 @@ function startTimer()
   }
 }
 
+/* Handling expiration of timers */
 function expired() {
   finishedlist[taskNum] = 1;
-  startTimer();
   taskNum++;
+  startTimer();
 }
 
 var finished = 0;
