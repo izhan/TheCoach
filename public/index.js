@@ -50,7 +50,7 @@ var message2 = {
   id: 0,
   name: "Bob McDonalds",
   text: "Ummm, what is this hackathon man?",
-  image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
+  image_url: ''
 };
 var message3 = {
   id: 0,
@@ -68,13 +68,13 @@ var message4 = {
 var twitter1 = {
   id: 0,
   name: "Irvin Zhan",
-  text: "Work work work work!  Twerk twerk twerk twerk!",
+  text: "@TellTheCoach Work work work work!  Twerk twerk twerk twerk!",
   image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
 };
 var twitter2 = {
   id: 0,
   name: "Donald Trump",
-  text: "Ummm, what is this hackathon man?",
+  text: "@TellTheCoach Ummm, what is this hackathon man? #PrincetonHackathon2013",
   image_url: 'https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2.jpg'
 };
 
