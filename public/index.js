@@ -12,37 +12,15 @@ $(function(){
   appendMessage(message2);
   theCoachSays();
 
-  $('.add-task').on('click', function(){
-  	var hour=$("#hours").val();
-  	var mins=$("#minutes").val();
-  	var secs=$("#seconds").val();
-    if (isFinite(parseFloat(hour)) || isFinite(parseFloat(mins)) || isFinite(parseFloat(secs)))
-    {
-      if(hour == "")
-        hour = 0;
-      if(mins == "")
-        mins = 0;
-      if(secs == "")
-        secs = 0;
+  $("#hours, #minutes, #seconds, #task").keyup(function (e) {
+    if (e.keyCode == 13) {
+      submitTask();
     }
-  	if (!validateTime(hour, mins, secs)) {
-  		alert("Please insert a valid time");
-  		return;
-  	}
-  	var tasks = $("#task").val();
-  	var task = {
-  	hours: hour,
-  	minutes: mins,
-  	seconds: secs,
-  	name: tasks,
-  	time: convertMS(hour,mins,secs),
-  	};
-  	appendTask(task);
-  	$("#hours").val('');
-  	$("#task").val('');
-  	$("#minutes").val('');
-  	$("#seconds").val('');
-  })
+  });
+
+  $('.add-task').on('click', function(){
+  	submitTask();
+  });
 });
 
 function postMessage( message )
@@ -83,6 +61,40 @@ function transitionToCoach()
 
 var finishedlist = [];
 var count = 0;
+
+function submitTask()
+{
+  var hour=$("#hours").val();
+  var mins=$("#minutes").val();
+  var secs=$("#seconds").val();
+  if (isFinite(parseFloat(hour)) || isFinite(parseFloat(mins)) || isFinite(parseFloat(secs)))
+  {
+    if(hour == "")
+      hour = 0;
+    if(mins == "")
+      mins = 0;
+    if(secs == "")
+      secs = 0;
+  }
+  if (!validateTime(hour, mins, secs)) {
+    alert("Please insert a valid time");
+    return;
+  }
+  var tasks = $("#task").val();
+  var task = {
+    hours: hour,
+    minutes: mins,
+    seconds: secs,
+    name: tasks,
+    time: convertMS(hour,mins,secs),
+  };
+  appendTask(task);
+  $("#hours").val('');
+  $("#task").val('');
+  $("#minutes").val('');
+  $("#seconds").val('');
+}
+
 function appendTask(item)
 {
   finishedlist.push(0);
