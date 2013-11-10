@@ -7,16 +7,6 @@ $(function(){
 
   appendTask(task1);
   appendTask(task2);
-  appendTask(task1);
-  appendTask(task2);
-  appendTask(task1);
-  appendTask(task2);
-  appendTask(task1);
-  appendTask(task2);
-  appendTask(task1);
-  appendTask(task2);
-  appendTask(task1);
-  appendTask(task2);
 
   appendMessage(message1);
   appendMessage(message2);
@@ -118,8 +108,8 @@ function appendMessage(item)
   // message from twitter
   if (item.image_url.length != 0)
   {
-
-    $('.message-list').prepend($("<div class='message-item'><div class='message-image twitter'></div><span class='message-name'>" + item.name + 
+    $('.message-list').prepend($("<div class='message-item'><div class='message-image twitter' style='background-image: url("
+      + item.image_url + ");'></div><span class='message-name'>" + item.name + 
       ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn(1000));
   }
   else
@@ -222,7 +212,7 @@ var message2 = {
   id: 0,
   name: "The Dude",
   text: "Dude, like thats just your opinion man.",
-  image_url: ""
+  image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
 };
 
 function onlyNumbers(a,b,c) 
