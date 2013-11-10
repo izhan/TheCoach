@@ -5,11 +5,6 @@ $(function(){
     transitionToCoach();
   });
 
-  appendTask(task1);
-  appendTask(task2);
-
-  appendMessage(message1);
-  appendMessage(message2);
   theCoachSays();
 
   $("#hours, #minutes, #seconds, #task").keyup(function (e) {
@@ -140,6 +135,7 @@ function appendTask(item)
     readyToGo = true;
     $('.lame-coach-message').hide();
     $('.ready-to-go').show();
+    $('.show-coach').css('display', 'inline-block');
   }
 }
 
@@ -340,7 +336,9 @@ function taskFinished(numTask) {
   finished++;
   if (finished == tasklist.length) {
     theCoachSays("Finished!");
-    allDone();
+    setTimeout(function(){
+      allDone();
+    }, 2000);
   }
   if (numTask == (taskNum)) {
     expired();

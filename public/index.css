@@ -141,11 +141,8 @@ p, span, div, section {
   width: 150px;
 }
 .lame-coach-message {
-  padding-top: 15px;
-  vertical-align: 80px;
-  padding-left: 10px;
-  font-size: 55px;
-  z-index: 5;
+  font-size: 30px;
+  text-align: left;
 }
 .ready-to-go {
   display: none;
@@ -153,6 +150,7 @@ p, span, div, section {
   text-align: left;
 }
 .show-coach {
+  display: none;
   font-size: 19px;
   color: white;
   padding: 8px 20px;
@@ -172,6 +170,8 @@ p, span, div, section {
 }
 .break-now {
   position: absolute;
+  bottom: 30px;
+  left: 62px;
   z-index: 75;
   color: #FF4B00;
   margin-top: 10px;
@@ -207,7 +207,7 @@ p, span, div, section {
 .task-list {
   position: absolute;
   top: 80px;
-  bottom: 30px;
+  bottom: 50px;
   left: 0;
   right: 0;
   overflow: scroll;
