@@ -5,13 +5,6 @@ $(function(){
     transitionToCoach();
   });
 
-  
-  appendTask(task1);
-  appendTask(task2);
-
-  appendMessage(message1);
-  appendMessage(message2);
-
   theCoachSays();
 
   $("#hours, #minutes, #seconds, #task").keyup(function (e) {
@@ -71,7 +64,7 @@ function getMessages()
 function transitionToCoach()
 {
   if (isSocial) {
-      postMessage('Cheer me on at: http://localhost:8000/motivate ' + time_min);
+      postMessage("I have just started " + tasklist.length + " tasks.  Cheer me on at: http://localhost:8000/motivate " + time_min);
   }
   $('.coach-page').fadeIn(1000);
   $('.task-number').html("Tasks Left: " + tasklist.length);
@@ -321,7 +314,7 @@ function expired() {
       var text = $($('.task-name')[taskNum]).text();
       postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
   }
-  theCoachSays("Dont worry, move on to the next task!");
+  theCoachSays("Move on to the next task!");
   finishedlist[taskNum] = 1;
   taskNum++;
   startTimer();
@@ -386,6 +379,7 @@ function allDone() {
 }
 
 function finishBreak() {
+  $('.the-break-coach-says').hide();
   $('.break-timer').countdown('destroy');
   $('.break-page').fadeOut(1000);
   $($('.task-time')[taskNum]).countdown('resume');
