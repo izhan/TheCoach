@@ -324,6 +324,11 @@ function expired() {
 }
 
 var finished = 0;
+var urls = ['http://www.dailymotion.com/swf/xsdji_rick-astley-never-gonna-give-you-up_music',
+'http://www.dailymotion.com/swf/xyh6xu_journey-dont-stop-believing_music',
+'http://www.dailymotion.com/swf/xengzl_cee-lo-green-fuck-you_music',
+
+];
 
 /* Marking tasks finished */
 function taskFinished(numTask) {
@@ -351,6 +356,7 @@ function takeBreak() {
   $($('.task-time')[taskNum]).countdown('pause');  
   $('.break-timer').countdown({until: "0h 10m 0s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: finishBreak});
+  $('.break-timer').append("<div class='finishBreak' onclick='finishBreak'>End break</div><div class=nextVid onclick='getNextVid'>Next Video</div>");
 }
 
 function allDone() {
@@ -362,4 +368,8 @@ function finishBreak() {
   $('.break-page').fadeOut(1000);
   $($('.task-time')[taskNum]).countdown('resume');
   dangerTimer.resume();
+}
+var counter = 0;
+function getNextVid() {
+  $('iframe').attr('src', urls[counter%urls.length]);
 }
