@@ -361,7 +361,8 @@ function takeBreak() {
   $($('.task-time')[taskNum]).countdown('pause');  
   $('.break-timer').countdown({until: "0h 10m 0s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: finishBreak});
-  $('.break-timer').append("<div class='finishBreak' onclick='finishBreak'>End break</div><div class=nextVid onclick='getNextVid'>Next Video</div>");
+  $(".nextVid").onclick(getNextVid());
+  $(".finishBreak").onclick(finishBreak());
 }
 
 function allDone() {
