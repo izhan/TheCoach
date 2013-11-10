@@ -328,5 +328,5 @@ function takeBreak() {
 }
 
 function allDone() {
-  
+  window.location.href = "alldone.html";
 }
