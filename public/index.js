@@ -253,7 +253,7 @@ function startTimer()
 function expired() {
   if (isSocial) {
       var text = $($('.task-name')[taskNum]).text();
-      postMessage("I didn't finish the time in task: "+ text +"! Come cheer me on so I don't fall behind!");
+      postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
   }
   finishedlist[taskNum] = 1;
   taskNum++;
