@@ -41,7 +41,7 @@ $(function(){
 
 function postMessage( message )
 {
-    $.post("query/", {msg: message});
+    $.get("post/?msg="+ message);
 }
 
 function getMessages()
@@ -63,6 +63,9 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
+  if (isSocial) {
+      postMessage('Cheer me on at: http://localhost:8000/motivate ' + time_min);
+  }
   $('.coach-page').fadeIn(1000);
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   $('.initial-page').hide();
@@ -172,6 +175,7 @@ var time_hours = date.getHours() - 1;
 var full_time = "" + time_hours + ":" + time_min + ":00";
 var messageList = [];
 var maxId = -1;
+var isSocial = true;
 var numberOfPersonOptions = 2;
 var coachMessages = [
   "Work on it harder soldier!",
@@ -247,6 +251,10 @@ function startTimer()
 
 /* Handling expiration of timers */
 function expired() {
+  if (isSocial) {
+      var text = $($('.task-name')[taskNum]).text();
+      postMessage("I didn't finish the time in task: "+ text +"! Come cheer me on so I don't fall behind!");
+  }
   finishedlist[taskNum] = 1;
   taskNum++;
   startTimer();
@@ -256,6 +264,10 @@ var finished = 0;
 
 function taskFinished(numTask) {
   theCoachSays("Good job!");
+  if (isSocial) {
+    var text = $($('.task-name')[numTask]).text();
+    postMessage("I just finished my task: "+ text + "! Come and congratulate me!");
+  }
   finished++;
   if (finished == tasklist.length) {
     theCoachSays("finished!");
