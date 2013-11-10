@@ -172,6 +172,8 @@ p, span, div, section {
 }
 .break-now {
   position: absolute;
+  bottom: 30px;
+  left: 62px;
   z-index: 75;
   color: #FF4B00;
   margin-top: 10px;
