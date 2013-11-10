@@ -72,7 +72,7 @@ function transitionToCoach()
       postMessage('Cheer me on at: http://localhost:8000/motivate ' + time_min);
   }
   $('.coach-page').fadeIn(1000);
-  $('.task-number').html("Number of Tasks: " + tasklist.length);
+  $('.task-number').html("Tasks Left: " + tasklist.length);
   $('.initial-page').hide();
   getMessages();
   window.setInterval(function() {
@@ -120,7 +120,8 @@ function appendTask(item)
 {
   finishedlist.push(0);
   tasklist.push(item);
-  $('.task-list').append("<div class='task-item'><div class='checkbox' onclick='taskFinished(" + count + ")'></div><span class='task-name'>" + 
+  $('.task-list').append("<div class='task-item'><div class='checkmark'></div><div class='css-checkbox checkbox' onclick='taskFinished(" + count + ")'></div>" +
+    "<span class='task-name'>" + 
     item.name + " </span><div class='task-time'>" +
     "<span class='task-time-label'>Hour: <span class='task-time-number'>" + item.hours + " </span></span>" +
     "<span class='task-time-label'>Min: <span class='task-time-number'>" + item.minutes + " </span></span>" +
@@ -133,7 +134,7 @@ function appendTask(item)
   	 "<span class='front-time-label'>Min: <span class='front-time-number'>" + item.minutes + " </span></span>" +
   	 "<span class='front-time-label'>Sec: <span class='front-time-number'>" + item.seconds + " </span></span>" +
   	 "</span></div></div>");
-
+  
   if (!readyToGo)
   {
     readyToGo = true;
@@ -339,7 +340,7 @@ function taskFinished(numTask) {
   if (numTask == (taskNum)) {
     expired();
   }
-  $('.task-number').html("Number of Tasks: " + (tasklist.length - finished));
+  $('.task-number').html("Tasks Left: " + (tasklist.length - finished));
   $($('.task-item')[numTask]).fadeOut(1000);
   $($('.task-time')[numTask]).countdown('destroy');
   finishedlist[numTask] = 1;
