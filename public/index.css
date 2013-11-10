@@ -207,7 +207,7 @@ p, span, div, section {
 .task-list {
   position: absolute;
   top: 80px;
-  bottom: 50px;
+  bottom: 90px;
   left: 0;
   right: 0;
   overflow: scroll;

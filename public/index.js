@@ -382,7 +382,7 @@ function takeBreak() {
 }
 
 function allDone() {
-  window.location.href = "alldone.html";
+  window.location.href = "http://localhost:8000/alldone";
 }
 
 function finishBreak() {
