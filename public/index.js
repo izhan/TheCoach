@@ -348,7 +348,7 @@ function taskFinished(numTask) {
 function takeBreak() {
   dangerTimer.pause();
   $($('.task-time')[taskNum]).countdown('pause');  
-  $('.break-timer').countdown({until: "0h 0m 7s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
+  $('.break-timer').countdown({until: "0h 10m 0s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: finishBreak});
 }
 
