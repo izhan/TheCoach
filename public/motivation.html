@@ -15,15 +15,14 @@
       <div class="motivation-background-pavement"></div>
       <div class="motivation-background-ground"></div>
     </div>
-    {% csrf_token %}
     <div class="master-envelope">
       <section class="envelope-wrapper container initial" id="contact">
         <div class="flip wrapper">
           <div class="front"> 
-            <span class="envelope-title">Irvin Zhan</span>
-            <span class="envelope-title">Freelancer</span>
+            <span class="envelope-title">The Coach</span>
+            <span class="envelope-title">48 Fancyhouse Drive</span>
             <span class="envelope-title">Princeton, NJ</span>
-            <a href="#content" id="open-up">Get in touch.</a>
+            <a href="#content" id="open-up">Send a message to your friend!</a>
           </div>
 
           <div id="content" class="back">
@@ -35,7 +34,7 @@
                       <a class="x-button">x</a>
                       <form class="envelope" method="post" action="{% url 'motivate' %}">
                         <fieldset class="fieldset-contact">
-                          <legend>How can I help?</legend>
+                          <legend>What message would you like me to deliver?</legend>
                           <div class="field">
                             <input class="field-input name-input" id="email_name" type="text" name="name" placeholder="Enter your Name" />
                             <small class="error name-error"></small>

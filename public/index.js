@@ -59,7 +59,7 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
-  $('.coach-page').show();
+  $('.coach-page').fadeIn(1000);
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   $('.initial-page').hide();
   getMessages();
@@ -101,7 +101,7 @@ function appendMessage(item)
     maxId = item.id;
 
   $('.message-list').prepend($("<div class='message-item'><span class='message-name'>" + item.name + 
-    ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn('slow'));
+    ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn(1000));
 }
 
 // accepts a message.  if no message, then random talks.

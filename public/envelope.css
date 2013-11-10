@@ -381,3 +381,21 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background: #783839;
 }
+
+
+/* custom css for The Coach */
+.fieldset-contact legend {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#letter .x-button {
+  cursor: pointer;
+}
+input[type="text"] {
+  font-size: 20px;
+}
+textarea {
+  font-size: 20px;
+}
