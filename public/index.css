@@ -23,7 +23,7 @@
 p, span, div, section {
   box-sizing:border-box;
   -moz-box-sizing:border-box;
-  font-family: "Helvetica Neue";
+  font-family: 'PT Sans', sans-serif;
 }
 /* needs to also additionally modify padding and font-size */
 .button {
@@ -153,11 +153,12 @@ p, span, div, section {
   text-align: left;
 }
 .show-coach {
-  font-size: 16px;
+  font-size: 19px;
   color: white;
   padding: 8px 20px;
-  vertical-align: middle;
-  margin-left: 20px;
+  margin-top: 15px;
+  vertical-align: top;
+  margin-left: 25px;
 }
 .add-task {
   color: #FF4B00;
@@ -239,6 +240,16 @@ p, span, div, section {
   top: 250px;
   bottom: 0;
   right: 0;
+}
+.message-name {
+  margin-left: 5px;
+  margin-right: 10px;
+  font-size: 20px;
+  color: #FF4B00;
+  font-weight: 700;
+}
+.message-text {
+  font-size: 20px;
 }
 
 /* start background */
@@ -331,12 +342,12 @@ p, span, div, section {
 /* cool coach */
 .the-coach-says {
   display: none;
+  font-size: 27px;
   position: relative;
-  height: 100px;
   background: #B7F5FF;
   border: 4px solid #1CAF9A;
-  padding: 20px;
-  margin: 25px 25px 0 185px;
+  padding: 15px 25px;
+  margin: 30px 30px 0 190px;
   border-radius: 5px;
 }
 .the-coach-says:after, .the-coach-says:before {
@@ -366,12 +377,10 @@ p, span, div, section {
 .the-lame-coach-says {
   display: inline-block;
   position: relative;
-  height: 75px;
   vertical-align: top;
   background: #B7F5FF;
   border: 4px solid #1CAF9A;
-  padding: 12px 25px;
-  width: 400px;
+  padding: 10px 30px;
   border-radius: 5px;
 }
 .the-lame-coach-says:after, .the-lame-coach-says:before {
@@ -402,8 +411,8 @@ p, span, div, section {
   position: relative;
   background: #B7F5FF;
   border: 4px solid #1CAF9A;
-  padding: 20px;
-  margin: 25px 50px 25px 125px;
+  padding: 12px;
+  margin: 30px 50px 30px 125px;
   border-radius: 5px;
 }
 .message-item:after, .message-item:before {
