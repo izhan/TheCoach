@@ -212,7 +212,7 @@ var task1 = {
   name: "Study for ORF 309",
   time: 5000,
   hours: 0,
-  minutes: 0,
+  minutes: 10,
   seconds: 8
 };
 var task2 = {
@@ -307,5 +307,5 @@ function taskFinished(numTask) {
 }
 
 function allDone() {
-
+  
 }
