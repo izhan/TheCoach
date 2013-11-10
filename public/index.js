@@ -40,6 +40,11 @@ $(function(){
   })
 });
 
+function postMessage( message )
+{
+    $.post("query/", {msg: message});
+}
+
 function getMessages()
 {
   $.ajax({ url: "query/?id=" + maxId + "&time=" + full_time + "&date=" + full_date, success: function( data ) {
