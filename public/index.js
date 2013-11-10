@@ -5,6 +5,13 @@ $(function(){
     transitionToCoach();
   });
 
+  
+  appendTask(task1);
+  appendTask(task2);
+
+  appendMessage(message1);
+  appendMessage(message2);
+
   theCoachSays();
 
   $("#hours, #minutes, #seconds, #task").keyup(function (e) {
@@ -324,6 +331,11 @@ var finished = 0;
 var urls = ['http://www.dailymotion.com/swf/xsdji_rick-astley-never-gonna-give-you-up_music',
 'http://www.dailymotion.com/swf/xyh6xu_journey-dont-stop-believing_music',
 'http://www.dailymotion.com/swf/xengzl_cee-lo-green-fuck-you_music',
+'http://www.dailymotion.com/swf/x8g9n3_led-zeppelin-stairway-to-heaven_music',
+'http://www.dailymotion.com/swf/x905io_charlie-the-unicorn-3_shortfilms',
+'http://www.dailymotion.com/swf/xqmht_charlie-the-unicorn_fun',
+'http://www.dailymotion.com/swf/x10cq6_beatles-strawberry-fields-forever_music',
+'http://www.youtube.com/embed/c4JUu-kTaIs',
 
 ];
 
@@ -346,10 +358,10 @@ function taskFinished(numTask) {
   }
   finished++;
   if (finished == tasklist.length) {
-    theCoachSays("Finished!");
+    theCoachSays("Congrats, you finished!");
     setTimeout(function(){
       allDone();
-    }, 2000);
+    }, 1500);
   }
   if (numTask == (taskNum)) {
     clickFinish();
@@ -365,8 +377,8 @@ function takeBreak() {
   $($('.task-time')[taskNum]).countdown('pause');  
   $('.break-timer').countdown({until: "0h 10m 0s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: finishBreak});
-  $(".nextVid").onclick(getNextVid());
-  $(".finishBreak").onclick(finishBreak());
+  $(".nextVid").click(getNextVid);
+  $(".finishBreak").click(finishBreak);
 }
 
 function allDone() {
@@ -381,5 +393,6 @@ function finishBreak() {
 }
 var counter = 0;
 function getNextVid() {
-  $('iframe').attr('src', urls[counter%urls.length]);
+  counter++;
+  $('iframe').attr('src', urls[counter % urls.length]);
 }
