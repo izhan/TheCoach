@@ -50,7 +50,7 @@ $(function(){
 
 function postMessage( message )
 {
-    $.post("query/", {msg: message});
+    $.get("post/?msg="+ message);
 }
 
 function getMessages()
@@ -72,6 +72,9 @@ function getMessages()
 // call when user presses on lets go
 function transitionToCoach()
 {
+  if (isSocial) {
+      postMessage('Cheer me on at: http://localhost:8000/motivate ' + time_min);
+  }
   $('.coach-page').fadeIn(1000);
   $('.task-number').html("Number of Tasks: " + tasklist.length);
   $('.initial-page').hide();
@@ -181,6 +184,7 @@ var time_hours = date.getHours() - 1;
 var full_time = "" + time_hours + ":" + time_min + ":00";
 var messageList = [];
 var maxId = -1;
+var isSocial = true;
 var numberOfPersonOptions = 2;
 var coachMessages = [
   "Work on it harder soldier!",
@@ -207,9 +211,9 @@ var task1 = {
 var task2 = {
   name: "Finish drafting my Hackathon idea",
   time: 10000,
-  hours: 10,
-  minutes: 13,  
-  seconds: 20
+  hours: 0,
+  minutes: 0,  
+  seconds: 10
 };
 var message1 = {
   id: 0,
@@ -231,16 +235,20 @@ function validateTime(a,b,c)
 	&& !isNaN(c) && isFinite(parseFloat(c));
 }
 
+/* convert time to MS */
 function convertMS(a,b,c) 
 {
 	return parseInt(a)*3600000 + parseInt(b)*60000 + parseInt(c)*1000;
 }
 
 var taskNum = 0;
+
+/* Used to start timers */
 function startTimer() 
 {
-  for (var i = 0; i < tasklist.length; i++) {
+  for (var i = taskNum; i < tasklist.length; i++) {
     if (finishedlist[i] == 0) {
+      taskNum = i;
       var task = tasklist[i];
       $($('.task-time')[i]).countdown({until: task.hours + "h " + task.minutes + "m " + task.seconds + "s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
       '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: expired});
@@ -249,16 +257,25 @@ function startTimer()
   }
 }
 
+/* Handling expiration of timers */
 function expired() {
+  if (isSocial) {
+      var text = $($('.task-name')[taskNum]).text();
+      postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
+  }
   finishedlist[taskNum] = 1;
-  startTimer();
   taskNum++;
+  startTimer();
 }
 
 var finished = 0;
 
 function taskFinished(numTask) {
   theCoachSays("Good job!");
+  if (isSocial) {
+    var text = $($('.task-name')[numTask]).text();
+    postMessage("I just finished my task: "+ text + "! Come and congratulate me!");
+  }
   finished++;
   if (finished == tasklist.length) {
     theCoachSays("finished!");
