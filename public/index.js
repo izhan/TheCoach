@@ -165,7 +165,6 @@ function theCoachSays(message)
 {
   if (message)
   {
-    window.clearInterval(coachTimer);
     $('.the-coach').addClass('talking');
     $('.the-coach-says').html(message);
     $('.the-coach-says').show();
@@ -176,7 +175,6 @@ function theCoachSays(message)
     }, 2000 );
   }
   else {
-    window.clearInterval(coachTimer);
     $('.the-coach').addClass('talking');
     $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
     $('.the-coach-says').show();
@@ -193,6 +191,7 @@ var inDanger = true;
 // Coach says random stuff
 function randomTalking()
 {
+  window.clearInterval(coachTimer);
   coachTimer = setInterval(function(){
     $('.the-coach').addClass('talking');
     if (inDanger) {
