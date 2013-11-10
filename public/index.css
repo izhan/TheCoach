@@ -172,6 +172,7 @@ p, span, div, section {
 }
 
 .message-list {
+  overflow: scroll;
   position: absolute;
   left: 300px;
   top: 250px;
@@ -343,7 +344,7 @@ p, span, div, section {
   background: #B7F5FF;
   border: 4px solid #1CAF9A;
   padding: 20px;
-  margin: 10px 50px 10px 100px;
+  margin: 23px 50px 23px 125px;
   border-radius: 5px;
 }
 .message-item:after, .message-item:before {
@@ -368,4 +369,26 @@ p, span, div, section {
   border-width: 16px;
   top: 50%;
   margin-top: -16px;
+}
+.message-image {
+  /* default, but should be overridden every time */
+  height: 75px;
+  width: 75px;
+  background-size: 75px;
+  position: absolute;
+  left: -95px;
+  top: -15px;
+  background-image: url('person-1.png');
+}
+.person-1 {
+  background-image: url('person-1.png');
+}
+.person-2 {
+  background-image: url('person-2.png');
+}
+.person-body-1 {
+  background-image: url('person-body-1.png');
+}
+.person-body-2 {
+  background-image: url('person-body-2.png');
 }

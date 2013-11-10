@@ -7,10 +7,19 @@ $(function(){
 
   appendTask(task1);
   appendTask(task2);
+  appendTask(task1);
+  appendTask(task2);
+  appendTask(task1);
+  appendTask(task2);
+  appendTask(task1);
+  appendTask(task2);
+  appendTask(task1);
+  appendTask(task2);
+  appendTask(task1);
+  appendTask(task2);
 
   appendMessage(message1);
   appendMessage(message2);
-  
   theCoachSays();
   window.setInterval(function(){
     theCoachSays();
@@ -105,8 +114,20 @@ function appendMessage(item)
   if (item.id > maxId)
     maxId = item.id;
 
-  $('.message-list').prepend($("<div class='message-item'><span class='message-name'>" + item.name + 
-    ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn(1000));
+  // message from twitter
+  if (item.image_url.length != 0)
+  {
+
+    $('.message-list').prepend($("<div class='message-item'><div class='message-image twitter'></div><span class='message-name'>" + item.name + 
+      ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn(1000));
+  }
+  else
+  {
+    var random = Math.floor(Math.random()*numberOfPersonOptions) + 1;
+    $('.message-list').prepend($("<div class='message-item'><div class='message-image person-" + 
+      random + "'></div><span class='message-name'>" + item.name + 
+      ": </span><span class='message-text'>" + item.text + "</span</div>").fadeIn(1000));
+  }
 }
 
 // accepts a message.  if no message, then random talks.
@@ -160,6 +181,7 @@ var time_hours = date.getHours() - 1;
 var full_time = "" + time_hours + ":" + time_min + ":00";
 var messageList = [];
 var maxId = -1;
+var numberOfPersonOptions = 2;
 var coachMessages = [
   "Work on it harder soldier!",
   "What are you, a chicken?",
@@ -191,12 +213,14 @@ var task2 = {
 var message1 = {
   id: 0,
   name: "Harold Wu",
-  text: "Hey man, I hope you are doing well!  You got this!"
+  text: "Hey man, I hope you are doing well!  You got this!",
+  image_url: ""
 };
 var message2 = {
   id: 0,
   name: "The Dude",
-  text: "Dude, like thats just your opinion man."
+  text: "Dude, like thats just your opinion man.",
+  image_url: ""
 };
 
 function onlyNumbers(a,b,c) 
