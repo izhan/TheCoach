@@ -21,6 +21,11 @@ $(function(){
   $('.add-task').on('click', function(){
   	submitTask();
   });
+
+  $('.break-now').on('click', function(){
+    $('.break-page').fadeIn(1000);
+    takeBreak();
+  });
 });
 
 function postMessage( message )
@@ -316,6 +321,10 @@ function taskFinished(numTask) {
   $($('.task-item')[numTask]).fadeOut(1000);
   $($('.task-time')[numTask]).countdown('destroy');
   finishedlist[numTask] = 1;
+}
+
+function takeBreak() {
+
 }
 
 function allDone() {

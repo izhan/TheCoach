@@ -1,4 +1,4 @@
-.initial-page, .coach-page {
+.initial-page, .coach-page, .break-page {
   position: absolute;
   top: 0;
   left: 0;
@@ -12,6 +12,11 @@
 .coach-page {
   display: none;
   background: #FAFAFF;
+}
+.break-page {
+  display: none;
+  background: red;
+  z-index: 100;
 }
 
 /* BEGIN general css (not document-section specific) */
@@ -145,6 +150,16 @@ p, span, div, section {
   cursor: pointer;
 }
 .add-task:hover {
+  text-decoration: underline;
+}
+.break-now {
+  color: #FF4B00;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+.break-now:hover {
   text-decoration: underline;
 }
 
