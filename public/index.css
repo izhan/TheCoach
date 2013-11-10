@@ -153,6 +153,8 @@ p, span, div, section {
   text-decoration: underline;
 }
 .break-now {
+  position: absolute;
+  z-index: 75;
   color: #FF4B00;
   margin-top: 10px;
   display: inline-block;
