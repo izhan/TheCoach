@@ -39,6 +39,72 @@ function Timer(callback, delay) {
   this.resume();
 }
 
+
+var message1 = {
+  id: 0,
+  name: "Harold Wu",
+  text: "Hey man, I hope you are doing well!  You got this!",
+  image_url: ""
+};
+var message2 = {
+  id: 0,
+  name: "Bob McDonalds",
+  text: "Ummm, what is this hackathon man?",
+  image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
+};
+var message3 = {
+  id: 0,
+  name: "Harold Kumar",
+  text: "Sup dude, where is the white castle burgers at??",
+  image_url: ""
+};
+var message4 = {
+  id: 0,
+  name: "The Dude",
+  text: "Yeah, well, that's just, like, your opinion, man.",
+  image_url: ''
+};
+
+var twitter1 = {
+  id: 0,
+  name: "Irvin Zhan",
+  text: "Work work work work!  Twerk twerk twerk twerk!",
+  image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
+};
+var twitter2 = {
+  id: 0,
+  name: "Donald Trump",
+  text: "Ummm, what is this hackathon man?",
+  image_url: 'https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2.jpg'
+};
+
+var twitterList = [twitter1, twitter2];
+var tcount = 0;
+var mList = [message1, message2, message3, message4];
+var mcount = 0;
+
+// generate random msg
+function qwert()
+{
+  appendMessage(twitterList[tcount % twitterList.length]);
+  tcount++;
+}
+
+// for twitter
+function asdf(){
+  appendMessage(mList[mcount % mList.length]);
+  mcount++;
+}
+
+// multiple random msgs
+function zxcv(){
+  qwert();
+  asdf();
+  qwert();
+  qwert();
+  asdf();
+}
+
 function postMessage( message )
 {
     $.get("post/?msg="+ message);
@@ -257,18 +323,6 @@ var task2 = {
   minutes: 0,  
   seconds: 10
 };
-var message1 = {
-  id: 0,
-  name: "Harold Wu",
-  text: "Hey man, I hope you are doing well!  You got this!",
-  image_url: ""
-};
-var message2 = {
-  id: 0,
-  name: "The Dude",
-  text: "Dude, like thats just your opinion man.",
-  image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
-};
 
 function validateTime(a,b,c) 
 {
@@ -374,7 +428,7 @@ function takeBreak() {
 }
 
 function allDone() {
-  window.location.href = "http://localhost:8000/alldone";
+  window.location.href = "file:///Users/irvinzhan/Documents/TheCoach/public/alldone.html";
 }
 
 function finishBreak() {
