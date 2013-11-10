@@ -321,6 +321,7 @@ function expired() {
       var text = $($('.task-name')[taskNum]).text();
       postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
   }
+  theCoachSays("Dont worry, move on to the next task!");
   finishedlist[taskNum] = 1;
   taskNum++;
   startTimer();
@@ -338,6 +339,16 @@ var urls = ['http://www.dailymotion.com/swf/xsdji_rick-astley-never-gonna-give-y
 
 ];
 
+function clickFinish() {
+    if (isSocial) {
+      var text = $($('.task-name')[taskNum]).text();
+      postMessage("I didn't finish the task in time: "+ text +"! Come cheer me on so I don't fall behind!");
+  }
+  finishedlist[taskNum] = 1;
+  taskNum++;
+  startTimer();
+}
+
 /* Marking tasks finished */
 function taskFinished(numTask) {
   theCoachSays("Good job!");
@@ -353,7 +364,7 @@ function taskFinished(numTask) {
     }, 1500);
   }
   if (numTask == (taskNum)) {
-    expired();
+    clickFinish();
   }
   $('.task-number').html("Tasks Left: " + (tasklist.length - finished));
   $($('.task-item')[numTask]).fadeOut(1000);
