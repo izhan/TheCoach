@@ -19,8 +19,17 @@ $(function(){
   	var hour=$("#hours").val();
   	var mins=$("#minutes").val();
   	var secs=$("#seconds").val();
-  	if (!onlyNumbers(hour, mins, secs)) {
-  		alert("Please insert only numbers");
+    if (isFinite(parseFloat(hour)) || isFinite(parseFloat(mins)) || isFinite(parseFloat(secs)))
+    {
+      if(hour == "")
+        hour = 0;
+      if(mins == "")
+        mins = 0;
+      if(secs == "")
+        secs = 0;
+    }
+  	if (!validateTime(hour, mins, secs)) {
+  		alert("Please insert a valid time");
   		return;
   	}
   	var tasks = $("#task").val();
@@ -215,7 +224,7 @@ var message2 = {
   image_url: 'https://pbs.twimg.com/profile_images/1448108270/image_normal.jpg'
 };
 
-function onlyNumbers(a,b,c) 
+function validateTime(a,b,c) 
 {
 	return !isNaN(a) && isFinite(parseFloat(a)) 
 	&& !isNaN(b) && isFinite(parseFloat(b))

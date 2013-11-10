@@ -150,37 +150,52 @@ p, span, div, section {
 
 /* begin task list */
 .task-list-wrapper {
-  background: #B7F5FF;
   width: 300px;
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
+  z-index: 20;
+  background-image: url('clipboard-small.png');
+  background-size: 295px 99%;
+  background-position: top right;
+  background-repeat: no-repeat;
 }
 .task-number {
   color: white;
   font-size: 25px;
-  background-color: #2A3A48;
   text-align: center;
   padding: 15px 0;
+  color: black;
+  margin-top: 30px;
 }
 .task-list {
   position: absolute;
-  top: 60px;
-  bottom: 0;
+  top: 80px;
+  bottom: 30px;
   left: 0;
   right: 0;
   overflow: scroll;
 }
 .task-item {
   padding: 15px;
-  height: 75px;
+  padding: 10px 30px;
 }
 .task-name {
   color: #2A3A48;
+  width: 200px;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 30px;
+  font-family: 'Reenie Beanie', cursive;
+  line-height: 25px;
 }
 .task-time {
   color: #1CAF9A;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .message-list {
@@ -214,16 +229,14 @@ p, span, div, section {
   background-image: url('grass.png');
   height: 50px;
   position: relative;
-  left: 300px;
+  left: 0;
   z-index: 10;
 }
 .background-ground {
   background-image: url('ground.png');
   position: absolute;
   top: 240px;
-  position: absolute;
-  top: 240px;
-  left: 300px;
+  left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
