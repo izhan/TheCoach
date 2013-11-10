@@ -4,6 +4,8 @@
     <title>Encourage Your Friends</title>
     <link rel="stylesheet" href="motivation.css" type="text/css" />
     <link rel="stylesheet" href="envelope.css" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="motivation.js"></script>
   </head>
   <body>
     <div class="angel"></div>
@@ -13,18 +15,57 @@
       <div class="motivation-background-pavement"></div>
       <div class="motivation-background-ground"></div>
     </div>
-    <form class="envelope" method="post" action="{% url 'motivate' %}">
-      {% csrf_token %}
-      <div>
-        <span>Name: </span>
-        <input type="text" name="name" placeholder="Enter your Name" />
-      </div>
-      <div>
-        <span>Message: </span>
-        <textarea name="text"></textarea>
-      </div>
-      <input type="submit" value="Submit" />
-    </form>
+    {% csrf_token %}
+    <div class="master-envelope">
+      <section class="envelope-wrapper container initial" id="contact">
+        <div class="flip wrapper">
+          <div class="front"> 
+            <span class="envelope-title">Irvin Zhan</span>
+            <span class="envelope-title">Freelancer</span>
+            <span class="envelope-title">Princeton, NJ</span>
+            <a href="#content" id="open-up">Get in touch.</a>
+          </div>
 
+          <div id="content" class="back">
+            <div id="letter">
+              <div class="container">
+                <div class="flip">
+                    <div class="front"></div>
+                    <div class="back">
+                      <a class="x-button">x</a>
+                      <form class="envelope" method="post" action="{% url 'motivate' %}">
+                        <fieldset class="fieldset-contact">
+                          <legend>How can I help?</legend>
+                          <div class="field">
+                            <input class="field-input name-input" id="email_name" type="text" name="name" placeholder="Enter your Name" />
+                            <small class="error name-error"></small>
+                          </div>
+                    </div>
+                </div>
+              </div>
+                  <div class="field textarea-wrapper">
+                    <textarea name="text" class="field-input message-input" id="email_message" placeholder="Message"></textarea>
+                    <small class="error message-error"></small>
+                  </div>
+                  <input class="button simple send-button" type="submit" value="Submit" />
+                </fieldset>
+            </div>
+
+            <div id="top">
+            </div>
+
+            <div id="lid" class="container">
+              <div class="flip">    
+                <div class="front">
+                  <span class="message-confirmation">Message sent. Thanks for reaching out!</span>
+                  <a href="#contact" class="send-another">Send another one.</a>
+                </div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html

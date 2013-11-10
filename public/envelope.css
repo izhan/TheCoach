@@ -1,4 +1,14 @@
 /* Adopted from the envelope on www.irvinzhan.com */
+
+.master-envelope
+{
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 550px;
+}
+
 .contact-title-wrapper {
   position: absolute;
   width: 100%;
