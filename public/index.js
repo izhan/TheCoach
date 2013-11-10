@@ -234,7 +234,12 @@ var coachMessages = [
   "Man, this hackathon is kinda long, dontcha think?"
 ];
 var dangerMessages = [
-  "You're running out of time! Speed it up!"
+  "You're running out of time! Speed it up!",
+  "You're going slower than a snail!",
+  "If you don't finish on time, you will FEEL MY WRATH!",
+  "Move it! Move it! Move it!",
+  "Are you just sitting there watching paint dry? Get on it!",
+  "You only got five minutes to sa... Er I mean you only have a few minutes to finish!"
 ];
 
 var tasklist = [];
