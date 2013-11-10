@@ -28,6 +28,22 @@ $(function(){
   });
 });
 
+function Timer(callback, delay) {
+  var timerId, start, remaining = delay;
+
+  this.pause = function() {
+      window.clearTimeout(timerId);
+      remaining -= new Date() - start;
+  };
+
+  this.resume = function() {
+      start = new Date();
+      timerId = window.setTimeout(callback, remaining);
+  };
+
+  this.resume();
+}
+
 function postMessage( message )
 {
     $.get("post/?msg="+ message);
@@ -223,6 +239,7 @@ var dangerMessages = [
 
 var tasklist = [];
 
+var dangerTimer;
 var coachTimer;
 var readyToGo = false; // has someone added a task yet?
 var task1 = {
@@ -281,7 +298,7 @@ function startTimer()
       inDanger = true;
       if (timeMS > 600000) {
         inDanger = false;
-        setTimeout(function(){
+        dangerTimer = new Timer(function(){
           inDanger = true;}, (timeMS - 600000));
       }
       return;
@@ -324,9 +341,19 @@ function taskFinished(numTask) {
 }
 
 function takeBreak() {
-
+  dangerTimer.pause();
+  $($('.task-time')[taskNum]).countdown('pause');  
+  $('.break-timer').countdown({until: "0h 0m 7s", format: "HMS", layout:'<b>{d<}{dn} {dl} and {d>}'+ 
+      '{hn} {hl}, {mn} {ml}, {sn} {sl}</b>', onExpiry: finishBreak});
 }
 
 function allDone() {
   window.location.href = "alldone.html";
+}
+
+function finishBreak() {
+  $('.break-timer').countdown('destroy');
+  $('.break-page').fadeOut(1000);
+  $($('.task-time')[taskNum]).countdown('resume');
+  dangerTimer.resume();
 }
