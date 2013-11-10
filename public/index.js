@@ -163,25 +163,26 @@ function appendMessage(item)
 // accepts a message.  if no message, then random talks.
 function theCoachSays(message)
 {
+  window.clearTimeout(coachTimer2);
   if (message)
   {
     $('.the-coach').addClass('talking');
     $('.the-coach-says').html(message);
     $('.the-coach-says').show();
-    setTimeout(function(){
+    coachTimer2 = setTimeout(function(){
       $('.the-coach').removeClass('talking');
       $('.the-coach-says').hide();
       randomTalking();
-    }, 2000 );
+    }, 2500 );
   }
   else {
     $('.the-coach').addClass('talking');
     $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
     $('.the-coach-says').show();
-    setTimeout(function(){
+    coachTimer2 = setTimeout(function(){
       $('.the-coach').removeClass('talking');
       $('.the-coach-says').hide();
-    }, 2000 );
+    }, 2500 );
     randomTalking();
   }
 }
@@ -200,11 +201,11 @@ function randomTalking()
       $('.the-coach-says').html(coachMessages[Math.floor(Math.random()*coachMessages.length)]);
     }
     $('.the-coach-says').show();
-    setTimeout(function(){
+    coachTimer2 = setTimeout(function(){
       $('.the-coach').removeClass('talking');
       $('.the-coach-says').hide();
-    }, 2000 );
-  }, 4500); 
+    }, 2500 );
+  }, 5000); 
 }
 
 var date = new Date();
@@ -220,28 +221,27 @@ var maxId = -1;
 var isSocial = true;
 var numberOfPersonOptions = 2;
 var coachMessages = [
-  "Work on it harder soldier!",
-  "What are you, a chicken?",
-  "I really need a cheeseburger right now....",
-  "You're doing well!  Just kidding, you're performing like crap.",
-  "C'mon man, I've seen babies performing better.",
+  "I could really use a cheeseburger right now....",
   "Hello World!",
   "Prove P = NP next!",
-  "Man, this hackathon is kinda long, dontcha think?"
+  "If it doesnt challenge you, it doesnt change you.  Make it happen.",
+  "Work hard, play hard.  Just never, never, never give up.",
+  "No Fear. No Limits. No Excuses.",
+  "If youre going through hell, keep going."
 ];
 var dangerMessages = [
   "You're running out of time! Speed it up!",
-  "You're going slower than a snail!",
+  "Your lungs are burning. Your legs are shredded. Your heart is pounding.  KEEP GOING.",
   "If you don't finish on time, you will FEEL MY WRATH!",
   "Move it! Move it! Move it!",
-  "Are you just sitting there watching paint dry? Get on it!",
-  "You only got five minutes to sa... Er I mean you only have a few minutes to finish!"
+  "You only got five minutes to liv...er I mean you only have a few minutes to finish!"
 ];
 
 var tasklist = [];
 
 var dangerTimer;
 var coachTimer;
+var coachTimer2;
 var readyToGo = false; // has someone added a task yet?
 var task1 = {
   name: "Study for ORF 309",
