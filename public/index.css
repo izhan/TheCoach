@@ -39,12 +39,26 @@ p, span, div, section {
   right: 1px;
   border: none;
 }
+
+/* checkbox styling */
 .checkbox {
   height: 25px;
   width: 25px;
   border: 2px red;
   border-style: solid;
   display: inline-block;
+  margin-left: 2px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.checkmark {
+  display: none;
+  background-image: url('checkmark.png');
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0px;
+  background-size: 30px;
+  position: absolute;
 }
 
 /* front-page */
@@ -88,6 +102,9 @@ p, span, div, section {
   background-color: transparent; 
   border-style: dashed; 
   border-width: 0px 0px 1px 0px; 
+}
+.time-field {
+  text-align: center;
 }
 #task {
   width: 9em;
