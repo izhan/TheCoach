@@ -42,6 +42,12 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.lame-coach.happy-coach {
+  background-image: url('coach-after-happy.png');
+}
+.lame-coach-blinking.happy-coach-blinking {
+  background-image: url('coach-after-happy-blinking.png');
+}
 .introduction-wrapper {
   position: absolute;
   top: 25px;

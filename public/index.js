@@ -5,6 +5,13 @@ $(function(){
     transitionToCoach();
   });
 
+  
+  appendTask(task1);
+  appendTask(task2);
+
+  appendMessage(message1);
+  appendMessage(message2);
+
   theCoachSays();
 
   $("#hours, #minutes, #seconds, #task").keyup(function (e) {
@@ -335,10 +342,10 @@ function taskFinished(numTask) {
   }
   finished++;
   if (finished == tasklist.length) {
-    theCoachSays("Finished!");
+    theCoachSays("Congrats, you finished!");
     setTimeout(function(){
       allDone();
-    }, 2000);
+    }, 1500);
   }
   if (numTask == (taskNum)) {
     expired();
